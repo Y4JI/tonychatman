@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & Perspectives | Tony Chatman</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="apple.css">
+    <style>
+        .podcast-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-height: 380px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            padding-right: 15px;
+        }
+        
+        .podcast-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .podcast-list::-webkit-scrollbar-track {
+            background: #f5f5f7;
+            border-radius: 4px;
+        }
+        .podcast-list::-webkit-scrollbar-thumb {
+            background: #d2d2d7;
+            border-radius: 4px;
+        }
+
+        .podcast-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #e5e5ea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .podcast-item:last-child {
+            border-bottom: none;
+        }
+        
+        .podcast-item:hover {
+            opacity: 0.7;
+        }
+        
+        .podcast-item.active .podcast-title {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .podcast-item.active .fa-play {
+            color: var(--accent-terracotta);
+        }
+
+        .podcast-title {
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--text-color-secondary);
+            flex-grow: 1;
+        }
+        
+        .podcast-item .fa-play {
+            color: var(--text-color-secondary);
+            font-size: 12px;
+            width: 16px;
+        }
+        
+        .podcast-item .fa-cloud {
+            color: var(--text-color-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-start;">
+            <ul>
+                <li><a href="speaking.html">Speaking</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                <li><a href="resources.html" style="opacity: 1; font-weight: 500;">Resources</a></li>
+                <li><a href="meet-tony.html">Meeting Planners</a></li>
+                <li><a href="contact.html" class="btn-nav">Book Tony</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right" style="flex: 0; display: flex; justify-content: flex-end;">
+            <a href="index.html" class="logo">TC.</a>
+        </div>
+    </header>
+
+    <!-- I. Hero Section -->
+    <section class="hero-section" style="height: 60vh; min-height: 500px;">
+        <div class="video-container" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center; opacity: 0.4;">
+        </div>
+        <div class="hero-content reveal">
+            <h2 class="sub-heading" style="color: var(--accent-terracotta); font-size: 24px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;">Resources & Perspectives</h2>
+            <h1 class="main-heading">Podcasts,<br>Articles & Insights</h1>
+            <p class="hero-description" style="max-width: 700px; margin: 0 auto; color: #f5f5f7;">Ideas on resistance, change, leadership, and culture — from stages, studios, and twenty years of working with organizations that had to get it right.</p>
+        </div>
+    </section>
+
+    <!-- II. Podcasts Section -->
+    <section class="section-padding" style="background-color: var(--bg-color);">
+        <div class="container reveal">
+            <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-color-secondary); margin-bottom: 10px; text-align: center;">Tony Chatman</h3>
+            <h2 class="section-title">Featured Podcasts.</h2>
+            <div class="divider-terracotta"></div>
+            
+            <div class="split-layout" style="margin-top: 50px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+                <div class="image-side" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center; height: auto; min-height: 550px; position: relative; border-radius: 0;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));"></div>
+                </div>
+                <div class="content-side" style="padding: 40px 50px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    
+                    <ul class="podcast-list">
+                        <li class="podcast-item active">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">TMG "SNAP JUDGEMENTS"</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Story Samurai AI</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">EEC 339: Light Up Your Culture, with Tony Chatman</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Insights from a Professional Speaker</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Cultivating Inclusive Workplaces for Thriving Teams</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Tony Chatman Turns Problems Into Progress</span>
+                            <i class="fa-solid fa-cloud"></i>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Tony Chatman talks "Bias"</span>
+                            <i class="fa-solid fa-cloud"></i>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Ignite Your Workplace Culture</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Cultivating Leadership by Uncovering Our Unconscious Bias</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Why Leaders Should Aim to be Force Multipliers</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">Why Your Employees Are Not Engaged w/ Tony Chatman</span>
+                        </li>
+                        <li class="podcast-item">
+                            <i class="fa-solid fa-play"></i>
+                            <span class="podcast-title">How to be a powerful leader</span>
+                        </li>
+                    </ul>
+                    
+                    <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid #e5e5ea; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-color-secondary); margin-bottom: 6px; font-weight: 600;">Now Playing</div>
+                            <div style="font-weight: 600; font-size: 15px; color: var(--text-color);">TMG "SNAP JUDGEMENTS"</div>
+                            <div style="font-size: 13px; color: var(--text-color-secondary); margin-top: 4px; font-variant-numeric: tabular-nums;">0:00 / 1:05:00</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <i class="fa-solid fa-backward-step" style="color: var(--text-color); font-size: 16px; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                            <button style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent-terracotta); color: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-play" style="margin-left: 3px;"></i></button>
+                            <i class="fa-solid fa-forward-step" style="color: var(--text-color); font-size: 16px; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- III. Articles Section -->
+    <section class="services-section section-padding" style="background-color: var(--bg-white);">
+        <div class="container reveal">
+            <h2 class="section-title">Blog and Articles.</h2>
+            <div class="divider-terracotta"></div>
+            <p class="section-subtitle">Read the latest insights on change and leadership.</p>
+        </div>
+        <div class="container services-grid reveal">
+            <!-- Article 1 -->
+            <div class="service-card" style="background: #f5f5f7; height: auto; padding: 0; display: flex; flex-direction: column; justify-content: flex-start; text-decoration: none;">
+                <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                    <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">I Spent 15 Years Studying Why Change Fails. Here's What I Found.</h3>
+                    <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">Are you where you hoped to be at this point in your life? If not, why? That's the question I ask audiences...</p>
+                    <a href="https://tonychatman.com/i-spent-15-years-studying-why-change-fails-heres-what-i-found/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px;">Read More</a>
+                </div>
+            </div>
+            
+            <!-- Article 2 -->
+            <div class="service-card" style="background: #f5f5f7; height: auto; padding: 0; display: flex; flex-direction: column; justify-content: flex-start; text-decoration: none;">
+                <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                    <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">You're Not Hiring Bad People, You're Making Bad People</h3>
+                    <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">I've heard the conversation a hundred times. I can't tell you how it starts, but at somepoint, a manager...</p>
+                    <a href="https://tonychatman.com/youre-not-hiring-bad-people-youre-making-bad-people/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px;">Read More</a>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="service-card" style="background: #f5f5f7; height: auto; padding: 0; display: flex; flex-direction: column; justify-content: flex-start; text-decoration: none;">
+                <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1529156069898-49953eb1f5f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                    <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">When It Comes To Bad Managers, I Say Blame The Parents</h3>
+                    <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">We've all seen it, whether at a mall, a playground, our kid's school or even whilevisiting family, we've...</p>
+                    <a href="https://tonychatman.com/when-it-comes-to-bad-managers-i-say-blame-the-parents/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px;">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IV. Newsletter CTA Section -->
+    <section class="section-padding" style="background-color: var(--bg-color);">
+        <div class="container text-center reveal" style="text-align: center; max-width: 600px;">
+            <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-color-secondary); margin-bottom: 15px;">Stay Connected</h3>
+            <h2 class="section-title" style="font-size: 48px; margin-bottom: 15px;">Get New Insights When They Drop.</h2>
+            <div class="divider-terracotta"></div>
+            <p class="section-subtitle" style="margin-bottom: 40px; font-size: 18px;">Join the list and get Tony's latest thinking on resistance, change, and leadership delivered directly to your inbox.</p>
+            
+            <form style="display: flex; gap: 10px; justify-content: center; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+                <input type="email" placeholder="Your email address" required style="flex-grow: 1; padding: 14px 20px; border-radius: 980px; border: 1px solid #d2d2d7; font-size: 17px; font-family: var(--apple-font); outline: none; background: #fff; min-width: 250px; color: var(--text-color);">
+                <button type="submit" class="btn" style="white-space: nowrap; padding: 14px 28px;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- V. Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <a href="index.html"
+                    style="font-size: 21px; font-weight: 600; color: #1d1d1f; display: block; margin-bottom: 15px;">TC.</a>
+                <p>Tony Chatman has the rare gift of immediately connecting with his audience, regardless of age, race,
+                    gender or socio-economic background.</p>
+                <div style="margin-top: 20px; font-size: 16px;">
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="speaking.html">Speaking</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-phone" style="width: 20px;"></i> 630-400-5365</li>
+                    <li><i class="fa-solid fa-envelope" style="width: 20px;"></i> info@tonychatman.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Tony Chatman Inc. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+
+</html>

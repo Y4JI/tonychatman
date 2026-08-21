@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Advisory - Tony Chatman</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="apple.css">
+    <style>
+        /* Specific Styles for peterstark.html that build upon apple.css */
+
+        .page-header {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background-color: var(--bg-color);
+            text-align: center;
+            border-top: 5px solid var(--accent-terracotta);
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .breadcrumbs {
+            font-size: 14px;
+            color: var(--text-color-secondary);
+        }
+
+        .breadcrumbs a {
+            color: var(--accent-terracotta);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .layout-container {
+            display: flex;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            align-items: flex-start;
+        }
+
+        .main-content {
+            flex: 3;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            position: sticky;
+            top: 80px;
+        }
+
+        /* Main Content Typography & Layout */
+        .main-content h2 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+        }
+
+        .quote-block {
+            text-align: right;
+            margin-bottom: 40px;
+            padding-left: 0;
+        }
+
+        .quote-block p {
+            font-style: italic;
+            color: var(--text-color-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .quote-block {
+            border-right: 5px solid var(--accent-terracotta);
+            padding-right: 24px;
+            margin-right: 0;
+        }
+
+        .quote-block .quote-author {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .text-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        /* Buttons/Links list in main content */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .service-details {
+            background-color: var(--accent-terracotta);
+            color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .service-details summary {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 24px;
+            font-size: 17px;
+            font-weight: 500;
+            cursor: pointer;
+            list-style: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .service-details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .service-details summary:hover,
+        .service-details[open] summary {
+            background-color: var(--accent-terracotta-hover);
+        }
+
+        .service-details[open] summary i {
+            transform: rotate(90deg);
+        }
+
+        .service-details summary i {
+            transition: transform 0.2s ease;
+        }
+
+        .service-details .details-content {
+            background-color: #f5f5f7;
+            padding: 20px 24px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #1d1d1f;
+        }
+
+        /* Sidebar Widgets */
+        .widget {
+            margin-bottom: 50px;
+        }
+
+        .widget-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent-terracotta);
+            padding-bottom: 10px;
+        }
+
+        .widget-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .widget-nav li {
+            margin-bottom: 12px;
+        }
+
+        .widget-nav a {
+            color: var(--text-color);
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .widget-nav a:hover,
+        .widget-nav .current-page {
+            color: var(--accent-terracotta);
+        }
+
+        .widget-nav .sub-menu {
+            padding-left: 15px;
+            margin-top: 10px;
+            border-left: 2px solid #e5e5ea;
+        }
+
+        .widget-promo img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .widget-promo img:hover {
+            transform: scale(1.03);
+        }
+
+        .blog-post-list {
+            list-style: none;
+        }
+
+        .blog-post-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .blog-date {
+            text-align: center;
+            background: var(--bg-color);
+            padding: 8px;
+            border-radius: 8px;
+            min-width: 50px;
+        }
+
+        .blog-date .number {
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+        }
+
+        .blog-date .month {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-color-secondary);
+        }
+
+        .blog-post-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            line-height: 1.4;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .blog-post-author {
+            font-size: 12px;
+            color: var(--text-color-secondary);
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .layout-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .sidebar-content {
+                width: 100%;
+                position: static;
+            }
+
+            .quote-block {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-start;">
+            <ul>
+                <li><a href="speaking.html">Speaking</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="meet-tony.html">Meeting Planners</a></li>
+                <li><a href="contact.html" class="btn-nav">Book Tony</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right" style="flex: 0; display: flex; justify-content: flex-end;">
+            <a href="index.html" class="logo">TC.</a>
+        </div>
+    </header>
+
+
+
+    <!-- Main Layout -->
+    <section class="layout-container">
+        <!-- Left Column: Main Content -->
+        <div class="main-content">
+            <h2>Executive Advisory</h2>
+
+            <div class="quote-block reveal">
+                <p>"The pace of business has changed. The way most businesses and leaders make decisions hasn’t. "</p>
+                <span class="quote-author">-Tony Chatman</span>
+            </div>
+
+            <div class="text-content reveal">
+                <p>Being a successful executive is no longer determined simply by experience, intelligence and strategy.
+                    It’s determined by your ability to make effective decisions when the unexpected hits and the path
+                    forward isn’t obvious. New technologies disrupt entire industries, customer expectations change
+                    constantly and markets shift overnight. Today leaders are expected to adapt faster than ever before.
+                    And the consequences of getting it wrong have never been greater.</p>
+                <p>The challenge isn’t simply leading more change. It’s making sound decisions while people, teams, and
+                    organizations respond to that change in very different ways.</p>
+                <p>Tony works with executives leading high-stakes change, where execution matters and failure is not an
+                    option. This is not coaching. This is a working partnership with someone who has spent 20 years
+                    working with more than 200 organizations across over 100 industries, diagnosing why change stalls,
+                    and providing the tools needed to get back on track.</p>
+                <p>Whether you’re navigating transformation, industry disruption, rapid growth, restructuring, or a
+                    strategic initiative that can’t fail, Tony will help you make better decisions when the stakes are
+                    the highest and the paths forward isn’t obvious.</p>
+
+                <h3 style="font-size: 28px; font-weight: 500; margin-top: 40px; margin-bottom: 20px;">Who This Is For
+                </h3>
+                <p>Executive Advisory is designed for CEOs, founders, presidents, and senior executives responsible for
+                    leading their organization through high stakes change, disruption, or complexity. When you’re
+                    responsible for decisions, where failure is not an option, you don’t need more opinions. You need
+                    Tony, a trusted thought partner who will help you lead with greater precision when it matters most.
+                </p>
+
+                <h3 style="font-size: 28px; font-weight: 500; margin-top: 40px; margin-bottom: 20px;">THREE WAYS TO WORK
+                    TOGETHER</h3>
+
+                <div class="services-list reveal" style="margin-top: 20px; margin-bottom: 40px;">
+                    <details class="service-details">
+                        <summary><i class="fa-solid fa-angle-right"></i> ADVISORY</summary>
+                        <div class="details-content">
+                            An ongoing relationship for leaders responsible for high-stakes change. Regular cadence plus between-session access when timing matters.
+                        </div>
+                    </details>
+                    
+                    <details class="service-details">
+                        <summary><i class="fa-solid fa-angle-right"></i> RETREAT</summary>
+                        <div class="details-content">
+                            A concentrated weekend engagement with a small group of peers. Diagnosis and a plan within days, not months.
+                        </div>
+                    </details>
+                    
+                    <details class="service-details">
+                        <summary><i class="fa-solid fa-angle-right"></i> THE ARCHITECT CIRCLE</summary>
+                        <div class="details-content">
+                            Sustained access, a network of peers operating at the same level, while also exploring deeper work over time. By invitation after an initial engagement.
+                        </div>
+                    </details>
+                </div>
+
+                <h3 style="font-size: 28px; font-weight: 500; margin-top: 40px; margin-bottom: 20px;">HOW THIS STARTS
+                </h3>
+                <p>Apply and we’ll see if there is a fit. Not every applicant is accepted. This work requires a level of
+                    honesty and directness that not everyone is ready for. If this isn’t the right fit, Tony will tell
+                    you.</p>
+            </div>
+
+            <div class="text-content reveal" style="margin-top: 50px;">
+                <p><strong>Together we’ll:</strong></p>
+                <ul style="margin-bottom: 24px; padding-left: 20px;">
+                    <li style="margin-bottom: 10px; font-size: 17px; line-height: 1.6; color: var(--text-color);">
+                        Separate symptoms from root causes.</li>
+                    <li style="margin-bottom: 10px; font-size: 17px; line-height: 1.6; color: var(--text-color);">
+                        Challenge narratives and ideas based on assumptions before they become expensive mistakes.</li>
+                    <li style="margin-bottom: 10px; font-size: 17px; line-height: 1.6; color: var(--text-color);">
+                        Evaluate issues through multiple perspectives.</li>
+                    <li style="margin-bottom: 10px; font-size: 17px; line-height: 1.6; color: var(--text-color);">
+                        Diagnose the root causes of resistance.</li>
+                    <li style="margin-bottom: 10px; font-size: 17px; line-height: 1.6; color: var(--text-color);">Build
+                        responses that move people and the organization forward.</li>
+                </ul>
+                <p>This isn’t about having someone tell you what to do. It’s about having an experienced advisor who
+                    helps you determine what is actually true before you commit to the decisions that shape your
+                    organization.</p>
+            </div>
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="sidebar-content reveal">
+            <!-- Nav Widget -->
+            <div class="widget widget-nav">
+                <h4 class="widget-title">Navigation</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li>
+                        <a href="#">Services</a>
+                        <ul class="sub-menu">
+                            <li><a href="#" class="current-page">Executive Advisory</a></li>
+                            <li><a href="#">Surveys</a></li>
+                            <li><a href="#">Consulting</a></li>
+                            <li><a href="#">Training</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Books & More</a></li>
+                    <li><a href="#">Leadership Is Tough</a></li>
+                </ul>
+            </div>
+
+            <!-- Promo Widget -->
+            <div class="widget widget-promo">
+                <h4 class="widget-title">Helpful Leadership Products</h4>
+                <a href="#">
+                    <!-- Using a placeholder related to books/leadership since we don't have the exact image, 
+                         or falling back to a generic box if needed. Using an existing image style from index.html -->
+                    <div
+                        style="background-color: var(--bg-color); height: 250px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+                        <span style="color: var(--text-color-secondary); font-size: 14px;">[ Leadership Is Tough Cover
+                            Image ]</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Blog Posts Widget -->
+            <div class="widget">
+                <h4 class="widget-title">Get Workplace Tips</h4>
+                <ul class="blog-post-list">
+                    <li class="blog-post-item">
+                        <div class="blog-date">
+                            <span class="number">03</span>
+                            <span class="month">Aug</span>
+                        </div>
+                        <div>
+                            <a href="#" class="blog-post-title">The Accountability Problem That Starts at the Top</a>
+                            <span class="blog-post-author">by <strong>Peter Barron Stark</strong></span>
+                        </div>
+                    </li>
+                    <li class="blog-post-item">
+                        <div class="blog-date">
+                            <span class="number">15</span>
+                            <span class="month">Jul</span>
+                        </div>
+                        <div>
+                            <a href="#" class="blog-post-title">Managing Up Effectively</a>
+                            <span class="blog-post-author">by <strong>Peter Barron Stark</strong></span>
+                        </div>
+                    </li>
+                    <li class="blog-post-item">
+                        <div class="blog-date">
+                            <span class="number">13</span>
+                            <span class="month">Jul</span>
+                        </div>
+                        <div>
+                            <a href="#" class="blog-post-title">Why the Way You Spend Your Time Is Lying to You</a>
+                            <span class="blog-post-author">by <strong>Peter Barron Stark</strong></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Video Library Widget -->
+            <div class="widget widget-promo">
+                <h4 class="widget-title">Video Library</h4>
+                <a href="#" style="text-decoration: none; color: inherit; display: block; text-align: center;">
+                    <div
+                        style="background-color: var(--bg-color); height: 150px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                        <i class="fa-solid fa-play" style="font-size: 32px; color: var(--accent-terracotta);"></i>
+                    </div>
+                    <strong>Get more Tips in our Video Library</strong>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <a href="index.html"
+                    style="font-size: 21px; font-weight: 600; color: #1d1d1f; display: block; margin-bottom: 15px;">TC.</a>
+                <p>Tony Chatman has the rare gift of immediately connecting with his audience, regardless of age, race,
+                    gender or socio-economic background.</p>
+                <div style="margin-top: 20px; font-size: 16px;">
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="speaking.html">Speaking</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-phone" style="width: 20px;"></i> 630-400-5365</li>
+                    <li><i class="fa-solid fa-envelope" style="width: 20px;"></i> info@tonychatman.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Tony Chatman Inc. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations (reused from index.html)
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+
+</html>

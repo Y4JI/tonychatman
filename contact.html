@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Tony Chatman - Book Keynotes, Consulting & Coaching</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="apple.css">
+    <style>
+        .contact-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #000;
+            color: #f5f5f7;
+            overflow: hidden;
+            margin-top: 48px;
+        }
+
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(156,65,33,0.6) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .contact-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Photos/SPC_2104.edited.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: 1;
+            transform: scaleX(-1);
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .contact-info-wrapper, .contact-form-wrapper {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+
+        .contact-section {
+            background-color: #fafafa;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .info-icon {
+            background: var(--bg-color);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-terracotta);
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        .info-item:hover .info-icon {
+            background: var(--accent-terracotta);
+            color: #fff;
+        }
+
+        .info-text {
+            padding-top: 4px;
+        }
+
+        .info-text h4 {
+            font-size: 12px;
+            color: var(--text-color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .info-text p, .info-text a {
+            font-size: 19px;
+            color: var(--text-color);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .info-text a:hover {
+            color: var(--accent-terracotta);
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--accent-terracotta);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-color-secondary);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .form-control {
+            padding: 16px 20px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 17px;
+            color: var(--text-color);
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 0 0 4px rgba(184, 79, 41, 0.15);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231d1d1f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat, repeat;
+            background-position: right 1.2em top 50%, 0 0;
+            background-size: .65em auto, 100%;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+        
+        .faq-section {
+            background: var(--bg-color);
+        }
+
+        .faq-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            max-width: 800px;
+            margin: 0 auto;
+            border-top: 5px solid var(--accent-terracotta);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5ea;
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .faq-item:first-child {
+            padding-top: 0;
+        }
+
+        .faq-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 19px;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .faq-btn i {
+            color: var(--accent-terracotta);
+            transition: transform 0.3s ease;
+            font-size: 20px;
+        }
+
+        .faq-content {
+            font-size: 17px;
+            color: var(--text-color-secondary);
+            margin-top: 15px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-content {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .faq-item.active .faq-btn i {
+            transform: rotate(45deg);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-start;">
+            <ul>
+                <li><a href="speaking.html">Speaking</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="meet-tony.html">Meeting Planners</a></li>
+                <li><a href="contact.html" class="btn-nav">Book Tony</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right" style="flex: 0; display: flex; justify-content: flex-end;">
+            <a href="index.html" class="logo">TC.</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg"></div>
+        <div class="contact-hero-content reveal">
+            <h2 class="sub-heading" style="font-size: 21px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-terracotta); margin-bottom: 15px;">Contact</h2>
+            <h1 class="main-heading" style="font-size: 64px; font-weight: 600;">Tony Chatman.</h1>
+            <p class="hero-description" style="font-size: 24px; color: #f5f5f7; max-width: 600px; margin: 20px auto 0;">
+                Ready to spark real change in your organization? Reach out to check Tony's availability, request information, or book an engagement.
+            </p>
+            <div class="hero-cta" style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+                <a href="#contact-section" class="btn" style="background-color: var(--accent-terracotta); color: #fff; padding: 14px 30px; font-weight: 500;">Message Team</a>
+                <a href="mailto:info@tonychatman.com" class="btn btn-outline-light" style="padding: 14px 30px; font-weight: 500;">Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info & Form -->
+    <section id="contact-section" class="contact-section section-padding">
+        <div class="container split-layout align-items-stretch" style="align-items: stretch; gap: 40px;">
+            <div class="content-side reveal">
+                <div class="contact-info-wrapper">
+                    <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 10px; color: var(--text-color);">Let's Start a Conversation.</h2>
+                    <p style="font-size: 19px; color: var(--text-color-secondary); margin-bottom: 40px;">Reach out to Tony's team to discuss your upcoming event, training needs, or consulting inquiries.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-text">
+                            <h4>Address</h4>
+                            <p>PO Box 7765, Romeoville, IL 60446</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <a href="tel:6304005365">630-400-5365</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <a href="mailto:info@tonychatman.com">info@tonychatman.com</a>
+                        </div>
+                    </div>
+
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-side reveal" style="background: none; height: auto;">
+                <div class="contact-form-wrapper">
+                    <form class="contact-page-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Organization</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Role/Title</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Interest</label>
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>What are you interested in?</option>
+                                    <option value="keynote">Keynote</option>
+                                    <option value="training">Half/Full Day Training</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="planning">Strategic Planning</option>
+                                    <option value="other">Something else</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Event Date</label>
+                                <input type="text" class="form-control" placeholder="Month, Year or flexible">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label class="form-label">Details</label>
+                            <textarea class="form-control" placeholder="Tell us about your event or need..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; padding: 18px; font-weight: 500; font-size: 19px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom: 50px;">
+                <h2 class="section-title">Common Questions.</h2>
+            <div class="divider-terracotta"></div>
+                <p class="section-subtitle" style="color: var(--text-color-secondary);">Answers to the questions Tony's team hears most from event planners and organizations.</p>
+            </div>
+            
+            <div class="faq-card reveal">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        How far in advance should I book Tony?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Tony's calendar typically fills 3–6 months in advance for keynote engagements. For consulting and training, timelines vary. The earlier you reach out, the better your chances of securing your preferred dates.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        Does Tony customize his presentations?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Yes. Every keynote and workshop is tailored to your organization's specific challenges, industry, and goals. Tony's team will work with you in advance to understand your audience and what you need them to leave with.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        Can Tony present virtually?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Yes. Tony is a certified virtual presenter and has delivered keynotes and training programs to virtual audiences worldwide. All programs are available in-person or virtually.
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        What are Tony's AV and technical requirements?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Tony's full AV requirements are available for download on the <a href="meet-tony.html" style="color: var(--accent-terracotta); text-decoration: none;">Meeting Planners page</a>. His team is happy to work with your venue's existing setup wherever possible.
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        Does Tony offer multi-session or multi-day programs?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Yes. Tony offers single keynotes, half-day and full-day workshops, and multi-day training programs. Leadership Essentials is a full week-long program for new supervisors. Reach out to discuss what makes sense for your needs.
+                    </div>
+                </div>
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-btn">
+                        Where is Tony based and does he travel?
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-content">
+                        Tony is based in the Chicago area and travels nationally and internationally for engagements. He has worked with organizations across more than 100 industries in locations throughout the United States and abroad.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <a href="index.html" style="font-size: 21px; font-weight: 600; color: #1d1d1f; display: block; margin-bottom: 15px;">TC.</a>
+                <p>Tony Chatman has the rare gift of immediately connecting with his audience, regardless of age, race, gender or socio-economic background.</p>
+                <div style="margin-top: 20px; font-size: 16px;">
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="speaking.html">Speaking</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="executiveadvisory.html">Executive Advisory</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-phone" style="width: 20px;"></i> 630-400-5365</li>
+                    <li><i class="fa-solid fa-envelope" style="width: 20px;"></i> info@tonychatman.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Tony Chatman Inc. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-btn');
+            btn.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                faqItems.forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // If the clicked item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+
+</html>
