@@ -645,13 +645,24 @@ a {
 
 /* Book Section */
 .book-section {
-    background-color: #fff;
+    background-color: #F5EEDC; /* Softened from #D8AD45 to harmonize with the site's palette */
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.book-section .split-layout {
+    gap: 100px; /* Gives a proper space to the right side of the book */
 }
 .book-section .split-layout .image-side {
     background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    transform: scale(1.2); /* Make the book significantly bigger */
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08)) 
+            drop-shadow(0 15px 35px rgba(0, 0, 0, 0.15)) 
+            drop-shadow(0 30px 60px rgba(184, 79, 41, 0.1));
 }
 .book-placeholder {
     width: 300px;
