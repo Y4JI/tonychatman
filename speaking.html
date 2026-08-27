@@ -157,22 +157,156 @@
     </style>
 </head>
 <body>
-<!-- Header Navigation -->
-<header class="main-header">
-        <div class="header-left" style="flex: 0 0 auto; display: flex; justify-content: flex-start;">
-            <a class="logo" href="index.html"><img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 26px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" /></a>
+<!-- Desktop Header CSS -->
+    <style>
+        .top-utility-bar {
+            display: none; /* Hidden on mobile */
+        }
+        @media (min-width: 992px) {
+            .top-utility-bar {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10000;
+                background-color: #0A0F1D; /* Dark navy */
+                color: #e5e5ea;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 40px;
+                height: 45px;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+                transition: transform 0.3s ease;
+            }
+            .top-utility-bar.scrolled {
+                transform: translateY(-100%);
+            }
+            .top-utility-bar a {
+                color: #e5e5ea;
+                text-decoration: none;
+                transition: color 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .top-utility-bar a:hover {
+                color: #FF6B00; /* Match text-orange-high-contrast */
+            }
+            .top-utility-bar .util-left, .top-utility-bar .util-right {
+                display: flex;
+                align-items: center;
+                gap: 28px;
+            }
+            .top-utility-bar .util-right .social-icons {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+            .top-utility-bar .social-icons i {
+                font-size: 16px;
+            }
+            
+            /* Floating Main Header */
+            .main-header {
+                top: 65px !important; /* Below utility bar (45px) + 20px gap */
+                left: 50% !important;
+                transform: translateX(-50%);
+                width: 92% !important;
+                max-width: 1200px;
+                border-radius: 980px;
+                height: 64px !important;
+                padding: 0 35px !important;
+                background: rgba(10, 15, 29, 0.25) !important;
+                backdrop-filter: blur(16px) !important;
+                -webkit-backdrop-filter: blur(16px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                transition: top 0.3s ease, background 0.3s ease !important;
+            }
+            .main-header.scrolled {
+                top: 20px !important;
+                background: rgba(10, 15, 29, 0.45) !important;
+            }
+            .main-header .logo img {
+                height: 28px !important;
+            }
+        }
+    
+            /* Explicit enforcement of uniform sizes */
+            .main-header {
+                height: 64px !important;
+                padding: 0 35px !important;
+                box-sizing: border-box !important;
+            }
+            .main-header .logo img {
+                height: 35px !important;
+                width: auto !important;
+                display: inline-block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .main-header ul {
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 30px !important;
+            }
+            .main-header ul li {
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .top-utility-bar {
+                height: 45px !important;
+                padding: 0 40px !important;
+                box-sizing: border-box !important;
+            }
+
+    </style>
+
+    <!-- Top Utility Bar -->
+    <div class="top-utility-bar">
+        <div class="util-left">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
         </div>
-        <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-end;">
-            <ul>
-<li><a href="speaking.html" style="color: #fff; opacity: 1;">Speaking</a></li>
-<li><a href="training.html">Training</a></li>
-<li><a href="executiveadvisory.html">Executive Advisory</a></li>
-<li><a href="resources.html">Resources</a></li>
-<li><a href="meet-tony.html">Meeting Planners</a></li>
-<li><a class="btn-nav" href="contact.html">Book Tony</a></li>
-</ul>
+        <div class="util-right">
+            <span>Meeting Professionals</span>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="mainHeader">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="training.html">TRAINING</a></li>
+                <li><a href="executiveadvisory.html">EXECUTIVE ADVISORY</a></li>
+            </ul>
         </nav>
-</header>
+        <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
+            <a class="logo" href="index.html">
+                <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
+            </a>
+        </div>
+        <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="resources.html">RESOURCES</a></li>
+                <li><a href="meet-tony.html" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a class="btn btn-orange btn-nav-custom" href="contact.html">BOOK TONY</a></li>
+            </ul>
+        </nav>
+    </header>
 <!-- Hero Section -->
 <section class="hero-section" style="background-image: url('Photos/SPC_2104.edited.jpg'); background-size: cover; background-position: center;">
 <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
@@ -564,6 +698,21 @@
 
         revealElements.forEach(el => {
             revealOnScroll.observe(el);
+        });
+    </script>
+<script>
+        // Header Scroll Effect
+        const topUtilityBar = document.querySelector('.top-utility-bar');
+        const mainHeader = document.getElementById('mainHeader');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                if(topUtilityBar) topUtilityBar.classList.add('scrolled');
+                if(mainHeader) mainHeader.classList.add('scrolled');
+            } else {
+                if(topUtilityBar) topUtilityBar.classList.remove('scrolled');
+                if(mainHeader) mainHeader.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
