@@ -445,12 +445,32 @@
                     return 350; // Fallback
                 };
 
+                const scrollNext = () => {
+                    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+                        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                    }
+                };
+
                 prevBtn.addEventListener('click', () => {
                     carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
                 });
                 
                 nextBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                    scrollNext();
+                });
+
+                // Auto-scroll every 3 seconds
+                let autoScrollInterval = setInterval(scrollNext, 3000);
+
+                // Pause auto-scroll on hover
+                carousel.parentElement.addEventListener('mouseenter', () => {
+                    clearInterval(autoScrollInterval);
+                });
+
+                carousel.parentElement.addEventListener('mouseleave', () => {
+                    autoScrollInterval = setInterval(scrollNext, 3000);
                 });
             }
         });
