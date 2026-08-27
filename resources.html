@@ -333,13 +333,11 @@
                 <div class="divider-terracotta"></div>
                 <p class="section-subtitle">Read the latest insights on change and leadership.</p>
             </div>
-            <!-- Navigation arrows -->
-            <div class="carousel-nav" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button id="blog-prev" class="btn btn-outline" style="width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;"><i class="fa-solid fa-chevron-left"></i></button>
-                <button id="blog-next" class="btn btn-outline" style="width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
+            
         </div>
-        <div class="container reveal">
+        <div class="container reveal" style="position: relative;">
+            <button id="blog-prev" class="btn btn-outline" style="position: absolute; top: 50%; left: -70px; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; background: var(--bg-white); box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="blog-next" class="btn btn-outline" style="position: absolute; top: 50%; right: -70px; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; background: var(--bg-white); box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-right"></i></button>
             <style>
                 #blog-carousel::-webkit-scrollbar {
                     display: none;
