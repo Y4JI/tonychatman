@@ -15,8 +15,10 @@
     <!-- Desktop Header CSS -->
     <style>
         .top-utility-bar {
-            display: none; /* Hidden on mobile */
+            display: none;
+            /* Hidden on mobile */
         }
+
         @media (min-width: 992px) {
             .top-utility-bar {
                 display: flex;
@@ -25,7 +27,8 @@
                 left: 0;
                 width: 100%;
                 z-index: 10000;
-                background-color: #0A0F1D; /* Dark navy */
+                background-color: #0A0F1D;
+                /* Dark navy */
                 color: #e5e5ea;
                 justify-content: space-between;
                 align-items: center;
@@ -34,12 +37,14 @@
                 font-size: 13px;
                 font-weight: 500;
                 letter-spacing: 0.02em;
-                box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+                box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
                 transition: transform 0.3s ease;
             }
+
             .top-utility-bar.scrolled {
                 transform: translateY(-100%);
             }
+
             .top-utility-bar a {
                 color: #e5e5ea;
                 text-decoration: none;
@@ -48,26 +53,33 @@
                 align-items: center;
                 gap: 8px;
             }
+
             .top-utility-bar a:hover {
-                color: #FF6B00; /* Match text-orange-high-contrast */
+                color: #FF6B00;
+                /* Match text-orange-high-contrast */
             }
-            .top-utility-bar .util-left, .top-utility-bar .util-right {
+
+            .top-utility-bar .util-left,
+            .top-utility-bar .util-right {
                 display: flex;
                 align-items: center;
                 gap: 28px;
             }
+
             .top-utility-bar .util-right .social-icons {
                 display: flex;
                 gap: 16px;
                 align-items: center;
             }
+
             .top-utility-bar .social-icons i {
                 font-size: 16px;
             }
-            
+
             /* Floating Main Header */
             .main-header {
-                top: 65px !important; /* Below utility bar (45px) + 20px gap */
+                top: 65px !important;
+                /* Below utility bar (45px) + 20px gap */
                 left: 50% !important;
                 transform: translateX(-50%);
                 width: 92% !important;
@@ -79,49 +91,54 @@
                 backdrop-filter: blur(16px) !important;
                 -webkit-backdrop-filter: blur(16px) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
                 transition: top 0.3s ease, background 0.3s ease !important;
             }
+
             .main-header.scrolled {
                 top: 20px !important;
                 background: rgba(10, 15, 29, 0.45) !important;
             }
+
             .main-header .logo img {
                 height: 28px !important;
             }
         }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .main-header ul {
-                margin: 0 !important;
-                padding: 0 !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 30px !important;
-            }
-            .main-header ul li {
-                list-style: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .top-utility-bar {
-                height: 45px !important;
-                padding: 0 40px !important;
-                box-sizing: border-box !important;
-            }
 
+        /* Explicit enforcement of uniform sizes */
+        .main-header {
+            height: 64px !important;
+            padding: 0 35px !important;
+            box-sizing: border-box !important;
+        }
+
+        .main-header .logo img {
+            height: 35px !important;
+            width: auto !important;
+            display: inline-block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .main-header ul {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 30px !important;
+        }
+
+        .main-header ul li {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .top-utility-bar {
+            height: 45px !important;
+            padding: 0 40px !important;
+            box-sizing: border-box !important;
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -144,21 +161,22 @@
     <header class="main-header" id="mainHeader">
         <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 30px;">
             <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
-                <li><a href="speaking.html">SPEAKING</a></li>
-                <li><a href="training.html">TRAINING</a></li>
-                <li><a href="executiveadvisory.html">EXECUTIVE ADVISORY</a></li>
+                <li><a href="/speaking">SPEAKING</a></li>
+                <li><a href="/training">TRAINING</a></li>
+                <li><a href="/executiveadvisory">EXECUTIVE ADVISORY</a></li>
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="index.html">
-                <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
+            <a class="logo" href="/">
+                <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo"
+                    style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
         </div>
         <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
             <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
-                <li><a href="resources.html">RESOURCES</a></li>
-                <li><a href="meet-tony.html" style="color: #FF6B00;">MEETING PLANNERS</a></li>
-                <li><a class="btn btn-orange btn-nav-custom" href="contact.html">BOOK TONY</a></li>
+                <li><a href="/resources">RESOURCES</a></li>
+                <li><a href="/meet-tony" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
     </header>
@@ -204,14 +222,15 @@
             </div>
         </div>
         <div class="hero-content reveal" style="position: relative; z-index: 10;">
-            <h2 class="sub-heading text-orange-high-contrast" style="color: #FF6B00 !important; font-weight: 600; letter-spacing: 0.15em;">TONY CHATMAN</h2>
+            <h2 class="sub-heading text-orange-high-contrast"
+                style="color: #FF6B00 !important; font-weight: 600; letter-spacing: 0.15em;">TONY CHATMAN</h2>
             <h1 class="main-heading" style="color: #FFFFFF;">From <span
                     class="text-orange-high-contrast">Resistance</span><br />to <span
                     class="text-orange-high-contrast">Results</span></h1>
             <p class="hero-description" style="color: #F8FAFC; font-weight: 400; line-height: 1.6;">Keynotes,
                 Consulting, and Coaching to deliver results when change can’t afford to fail.</p>
             <div class="hero-cta">
-                <a class="btn hero-btn-primary" href="contact.html">Book Tony</a>
+                <a class="btn hero-btn-primary" href="/contact">Book Tony</a>
                 <a class="btn hero-btn-secondary" href="#watch"><i class="fa-solid fa-play"></i> Watch Tony</a>
             </div>
         </div>
@@ -381,7 +400,7 @@
                             style="color: #fff; font-size:28px; flex-shrink:0;"></i> Communicate with absolute clarity
                     </li>
                 </ul>
-                <a class="btn" href="executiveadvisory.html"
+                <a class="btn" href="/executiveadvisory"
                     style="background-color: #fff; color: #9C4121; font-weight: 600; padding: 14px 32px; font-size: 18px; display: inline-block;">Start
                     Your Journey</a>
             </div>
@@ -396,7 +415,7 @@
         </div>
         <div class="container services-grid reveal">
             <div class="service-card">
-                <div class="service-card-bg" style="background-image: url('Photos/DCB_5615.JPG');"></div>
+                <div class="service-card-bg" style="background-image: url('Photos/DCB_5615.jpg');"></div>
                 <div class="service-card-overlay"></div>
                 <div class="service-card-content">
                     <h3>Keynotes</h3>
@@ -644,7 +663,7 @@
     <footer class="site-footer">
         <div class="footer-top">
             <div class="footer-col">
-                <a href="index.html"
+                <a href="/"
                     style="font-size: 21px; font-weight: 600; color: #1d1d1f; display: block; margin-bottom: 15px;">TC.</a>
                 <p>Tony Chatman has the rare gift of immediately connecting with his audience, regardless of age, race,
                     gender or socio-economic background.</p>
@@ -657,10 +676,10 @@
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
-                    <li><a href="speaking.html">Speaking</a></li>
-                    <li><a href="training.html">Training</a></li>
-                    <li><a href="executiveadvisory.html">Executive Advisory</a></li>
-                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="/speaking">Speaking</a></li>
+                    <li><a href="/training">Training</a></li>
+                    <li><a href="/executiveadvisory">Executive Advisory</a></li>
+                    <li><a href="/resources">Resources</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -721,7 +740,7 @@
         // Header Scroll Effect
         const topUtilityBar = document.querySelector('.top-utility-bar');
         const mainHeader = document.getElementById('mainHeader');
-        
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 topUtilityBar.classList.add('scrolled');
