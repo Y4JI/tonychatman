@@ -161,15 +161,16 @@
         </nav>
     </header>
 <!-- I. Hero Section -->
-<section class="hero-section">
-<div class="image-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-<img alt="Meet Tony Background" decoding="async" fetchpriority="high" height="2001" src="Photos/D87A3369.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" width="3000"/>
+<section class="hero-section hero-left-aligned" style="position: relative; z-index: 0;">
+<div class="image-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #0A0F1D;">
+<img alt="Meet Tony Background" decoding="async" fetchpriority="high" height="2001" src="Photos/moment-section-bg.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" width="3000"/>
+<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0) 70%);"></div>
 </div>
-<div class="hero-content reveal">
-<h2 class="sub-heading">Meet Tony</h2>
+<div class="hero-content reveal" style="position: relative; z-index: 10;">
+<h2 class="sub-heading" style="font-size: 24px; color: #FF6B00; text-transform: uppercase; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 20px;">MEET TONY</h2>
 <h1 class="main-heading">Tony Chatman</h1>
 <p class="hero-description" style="font-size: 24px; font-weight: 500; margin-bottom: 10px;">Chemical Engineer · Minister · Leadership Advisor</p>
-<p class="hero-description">His thesis: success depends on your relationship with <span style="color: var(--accent-terracotta);">resistance</span>.</p>
+<p class="hero-description">His thesis: success depends on your relationship with <span style="color: #FF6B00; font-style: italic;">resistance</span>.</p>
 <div class="hero-cta">
 <a class="btn" href="/contact">Book Tony</a>
 <a class="btn btn-outline-light" href="/speaking">View Keynotes</a>
@@ -223,16 +224,18 @@
 </div>
 </section>
 <!-- III. Thesis Strip -->
-<section class="section-padding" style="background-color: #f5f5f7;">
-<div class="container reveal text-center">
-<h2 style="font-size: 32px; font-style: italic; font-weight: 600; color: #1d1d1f; max-width: 800px; margin: 0 auto; line-height: 1.4;">"Resistance isn't the enemy of change It's the key to it"</h2>
-<p style="margin-top: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; font-weight: 600;">Tony Chatman</p>
+<section class="section-padding" style="background-color: var(--accent-terracotta);">
+<div class="container reveal">
+<div style="max-width: 800px; margin: 0 auto;">
+<h2 style="font-size: 32px; font-style: italic; font-weight: 600; color: #ffffff; text-align: center; line-height: 1.4;">"Resistance isn't the enemy of change It's the key to it"</h2>
+<p style="margin-top: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #ffffff; font-weight: 600; text-align: right; opacity: 0.9; padding-right: 60px;">- Tony Chatman</p>
+</div>
 </div>
 </section>
 <!-- IV. Bio Section -->
 <section class="section-padding">
 <div class="container split-layout">
-<div class="image-side" style="background-image: url('Photos/D87A3367.jpg'); background-size: cover; background-position: center top;">
+<div class="image-side" style="background-image: url('Photos/D87A3367.jpg'); background-size: cover; background-position: 85% center; min-height: 750px;">
 </div>
 <div class="content-side reveal">
 <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; margin-bottom: 10px;">The Story</h3>
@@ -242,7 +245,7 @@
 <p style="font-size: 17px; color: #515154; margin-bottom: 20px; line-height: 1.6;">
                     Most consultants bring either analytical precision or human intuition. Tony brings both — a mind trained to find patterns in complex systems and an instinct for why people do what they do. He connects the dots quickly. And he doesn't explain what he finds in one universal language. He speaks the language of the room.
                 </p>
-<blockquote style="border-left: 4px solid var(--accent-terracotta); padding-left: 20px; margin: 30px 0; font-size: 21px; font-weight: 600; color: #1d1d1f; font-style: italic;">
+<blockquote style="border-left: 4px solid var(--accent-terracotta); padding: 15px 20px; background-color: #f5f5f7; margin: 30px 0; font-size: 21px; font-weight: 600; color: #1d1d1f; font-style: italic; border-radius: 4px;">
                     That's not a communication style. That's a philosophy.
                 </blockquote>
 <p style="font-size: 17px; color: #515154; margin-bottom: 20px; line-height: 1.6;">
@@ -282,13 +285,50 @@
 </div>
 </section>
 <!-- VI. Why Hire Tony -->
+<!-- VI. Why Hire Tony -->
 <section class="services-section section-padding">
 <div class="container reveal">
 <h2 class="section-title">Why Hire Tony?</h2>
 <div class="divider-terracotta"></div>
 <p class="section-subtitle">Here is what executives, event planners, and organizations consistently say about working with Tony.</p>
 </div>
-<div class="container services-grid reveal">
+<style>
+    .services-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    @media (max-width: 1024px) {
+        .services-grid-4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        .services-grid-4 {
+            grid-template-columns: 1fr;
+        }
+    }
+    /* Enhance card legibility */
+    .services-grid-4 .service-card-overlay {
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+        height: 100%;
+        z-index: 1;
+    }
+    .services-grid-4 .service-card-content {
+        z-index: 2;
+    }
+    .services-grid-4 .service-card-content p {
+        color: #ffffff;
+        font-weight: 500;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .services-grid-4 .service-card-content h3 {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+</style>
+<div class="services-grid-4 reveal">
 <!-- Card 1 -->
 <div class="service-card" style="height: 400px;">
 <div class="service-card-bg" style="background-image: url('Photos/D87A3375.jpg');"></div>
@@ -330,20 +370,20 @@
 </div>
 </div>
 </div>
-<div class="container reveal text-center" style="margin-top: 50px;">
+<div class="reveal" style="display: flex; justify-content: center; margin: 50px auto 0; max-width: 1200px; width: 100%;">
 <a class="btn" href="/contact">Get a FREE quote</a>
 </div>
 </section>
 <!-- VII. Final CTA -->
-<section class="section-padding" style="background-color: #f5f5f7;">
+<section class="section-padding" style="background-color: #000000; color: #ffffff;">
 <div class="container reveal text-center">
-<h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; margin-bottom: 10px;">Work With Tony</h3>
-<h2 class="section-title">Ready to Engineer Through Resistance?</h2>
+<h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; margin-bottom: 10px; text-align: center;">Work With Tony</h3>
+<h2 class="section-title" style="color: #ffffff;">Ready to Engineer Through Resistance?</h2>
 <div class="divider-terracotta"></div>
-<p class="section-subtitle">Whether you need a keynote that moves a room or a partner to move your organization, the conversation starts here.</p>
+<p class="section-subtitle" style="color: #d2d2d7;">Whether you need a keynote that moves a room or a partner to move your organization, the conversation starts here.</p>
 <div style="margin-top: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
 <a class="btn" href="/contact">Book Tony</a>
-<a class="service-btn" href="/speaking" style="background: transparent; color: #1d1d1f; border: 1px solid #d2d2d7; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center;">
+<a class="service-btn" href="/speaking" style="background: transparent; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px 24px; border-radius: 980px; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
                     View Keynotes <i class="fa-solid fa-chevron-right" style="font-size: 12px; margin-left: 8px;"></i>
 </a>
 </div>
