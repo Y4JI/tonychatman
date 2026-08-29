@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Advisory - Tony Chatman</title>
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="apple.css">
     <style>
         /* Specific Styles for peterstark.html that build upon apple.css */
@@ -274,8 +274,10 @@
     <!-- Desktop Header CSS -->
     <style>
         .top-utility-bar {
-            display: none; /* Hidden on mobile */
+            display: none;
+            /* Hidden on mobile */
         }
+
         @media (min-width: 992px) {
             .top-utility-bar {
                 display: flex;
@@ -284,7 +286,8 @@
                 left: 0;
                 width: 100%;
                 z-index: 10000;
-                background-color: #0A0F1D; /* Dark navy */
+                background-color: #0A0F1D;
+                /* Dark navy */
                 color: #e5e5ea;
                 justify-content: space-between;
                 align-items: center;
@@ -293,12 +296,14 @@
                 font-size: 13px;
                 font-weight: 500;
                 letter-spacing: 0.02em;
-                box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+                box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
                 transition: transform 0.3s ease;
             }
+
             .top-utility-bar.scrolled {
                 transform: translateY(-100%);
             }
+
             .top-utility-bar a {
                 color: #e5e5ea;
                 text-decoration: none;
@@ -307,26 +312,33 @@
                 align-items: center;
                 gap: 8px;
             }
+
             .top-utility-bar a:hover {
-                color: #FF6B00; /* Match text-orange-high-contrast */
+                color: #FF6B00;
+                /* Match text-orange-high-contrast */
             }
-            .top-utility-bar .util-left, .top-utility-bar .util-right {
+
+            .top-utility-bar .util-left,
+            .top-utility-bar .util-right {
                 display: flex;
                 align-items: center;
                 gap: 28px;
             }
+
             .top-utility-bar .util-right .social-icons {
                 display: flex;
                 gap: 16px;
                 align-items: center;
             }
+
             .top-utility-bar .social-icons i {
                 font-size: 16px;
             }
-            
+
             /* Floating Main Header */
             .main-header {
-                top: 65px !important; /* Below utility bar (45px) + 20px gap */
+                top: 65px !important;
+                /* Below utility bar (45px) + 20px gap */
                 left: 50% !important;
                 transform: translateX(-50%);
                 width: 92% !important;
@@ -338,49 +350,54 @@
                 backdrop-filter: blur(16px) !important;
                 -webkit-backdrop-filter: blur(16px) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
                 transition: top 0.3s ease, background 0.3s ease !important;
             }
+
             .main-header.scrolled {
                 top: 20px !important;
                 background: rgba(10, 15, 29, 0.45) !important;
             }
+
             .main-header .logo img {
                 height: 28px !important;
             }
         }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .main-header ul {
-                margin: 0 !important;
-                padding: 0 !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 30px !important;
-            }
-            .main-header ul li {
-                list-style: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .top-utility-bar {
-                height: 45px !important;
-                padding: 0 40px !important;
-                box-sizing: border-box !important;
-            }
 
+        /* Explicit enforcement of uniform sizes */
+        .main-header {
+            height: 64px !important;
+            padding: 0 35px !important;
+            box-sizing: border-box !important;
+        }
+
+        .main-header .logo img {
+            height: 35px !important;
+            width: auto !important;
+            display: inline-block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .main-header ul {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 30px !important;
+        }
+
+        .main-header ul li {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .top-utility-bar {
+            height: 45px !important;
+            padding: 0 40px !important;
+            box-sizing: border-box !important;
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -392,9 +409,12 @@
         <div class="util-right">
             <span>Meeting Professionals</span>
             <div class="social-icons">
-                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </div>
@@ -437,28 +457,64 @@
                     Tony, a trusted thought partner who will help you lead with greater precision when it matters most.
                 </p>
 
-                <h3 style="font-size: 28px; font-weight: 500; margin-top: 40px; margin-bottom: 20px;">THREE WAYS TO WORK
+                <h3 style="font-size: 28px; font-weight: 500; margin-top: 40px; margin-bottom: 20px;">FOUR WAYS TO WORK
                     TOGETHER</h3>
 
                 <div class="services-list reveal" style="margin-top: 20px; margin-bottom: 40px;">
                     <details class="service-details">
-                        <summary><i class="fa-solid fa-angle-right"></i> ADVISORY</summary>
+                        <summary><i class="fa-solid fa-angle-right"></i> 1:1 EXECUTIVE ADVISORY</summary>
                         <div class="details-content">
-                            An ongoing relationship for leaders responsible for high-stakes change. Regular cadence plus between-session access when timing matters.
+                            <p style="margin-bottom: 15px;">For senior leaders who need more than a program. This is a
+                                direct working relationship with Tony — built around your specific decisions, your
+                                strategy, and the resistance patterns showing up at the highest level of your
+                                organization. Application only. Limited availability.</p>
+                            <a href="contact.html"
+                                style="color: var(--accent-terracotta); font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em;">APPLY
+                                <i class="fa-solid fa-arrow-right" style="margin-left: 5px; font-size: 12px;"></i></a>
                         </div>
                     </details>
-                    
+
                     <details class="service-details">
-                        <summary><i class="fa-solid fa-angle-right"></i> RETREAT</summary>
+                        <summary><i class="fa-solid fa-angle-right"></i> 1:1 COACHING</summary>
                         <div class="details-content">
-                            A concentrated weekend engagement with a small group of peers. Diagnosis and a plan within days, not months.
+                            <p style="margin-bottom: 15px;">For high performers experiencing resistance that's limiting
+                                what they're capable of. Structured, outcome-focused, and built around the same
+                                framework that moves organizations — applied to the individual. For leaders who are
+                                ready to stop being their own biggest obstacle.</p>
+                            <a href="contact.html"
+                                style="color: var(--accent-terracotta); font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em;">LEARN
+                                MORE <i class="fa-solid fa-arrow-right"
+                                    style="margin-left: 5px; font-size: 12px;"></i></a>
                         </div>
                     </details>
-                    
+
                     <details class="service-details">
-                        <summary><i class="fa-solid fa-angle-right"></i> THE ARCHITECT CIRCLE</summary>
+                        <summary><i class="fa-solid fa-angle-right"></i> THE RESISTANCE ARCHITECT PROGRAM – GROUP
+                            COACHING</summary>
                         <div class="details-content">
-                            Sustained access, a network of peers operating at the same level, while also exploring deeper work over time. By invitation after an initial engagement.
+                            <p style="margin-bottom: 15px;">A vetted cohort of executives doing the work together. Six
+                                weeks. Your real initiative. Peer-level accountability from leaders who understand the
+                                pressure you're under because they're under it too. Application required.</p>
+                            <a href="executiveadvisory.html"
+                                style="color: var(--accent-terracotta); font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em;">SEE
+                                THE PROGRAM <i class="fa-solid fa-arrow-right"
+                                    style="margin-left: 5px; font-size: 12px;"></i></a>
+                        </div>
+                    </details>
+
+                    <details class="service-details">
+                        <summary><i class="fa-solid fa-angle-right"></i> THE IN-HOUSE RESISTANCE ARCHITECT PROGRAM
+                        </summary>
+                        <div class="details-content">
+                            <p style="margin-bottom: 15px;">A version of the Resistance Architect Program delivered
+                                inside your organization. Same framework, same depth, contained to your people. Built
+                                for organizations that want this work embedded in their culture — whether for the
+                                C-suite, the leadership pipeline, or the managers who carry change on their backs every
+                                day.</p>
+                            <a href="contact.html"
+                                style="color: var(--accent-terracotta); font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em;">LEARN
+                                MORE <i class="fa-solid fa-arrow-right"
+                                    style="margin-left: 5px; font-size: 12px;"></i></a>
                         </div>
                     </details>
                 </div>
