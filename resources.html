@@ -233,12 +233,12 @@
 
     <!-- I. Hero Section -->
     <section class="hero-section" style="height: 60vh; min-height: 500px;">
-        <div class="video-container" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center; opacity: 0.4;">
+        <div class="video-container" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center 25%; opacity: 0.4;">
         </div>
         <div class="hero-content reveal">
-            <h2 class="sub-heading" style="color: var(--accent-terracotta); font-size: 24px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;">Resources & Perspectives</h2>
+            <h2 class="sub-heading" style="font-size: 24px; color: #FF6B00; text-transform: uppercase; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 20px;">RESOURCES & PERSPECTIVES</h2>
             <h1 class="main-heading">Podcasts,<br>Articles & Insights</h1>
-            <p class="hero-description" style="max-width: 700px; margin: 0 auto; color: #f5f5f7;">Ideas on resistance, change, leadership, and culture — from stages, studios, and twenty years of working with organizations that had to get it right.</p>
+            <p class="hero-description" style="max-width: 700px; margin: 0 auto; color: #d2d2d7;">Ideas on resistance, change, leadership, and culture — from stages, studios, and twenty years of working with organizations that had to get it right.</p>
         </div>
     </section>
 
@@ -249,11 +249,11 @@
             <h2 class="section-title">Featured Podcasts</h2>
             <div class="divider-terracotta"></div>
             
-            <div class="split-layout" style="margin-top: 50px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
-                <div class="image-side" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center; height: auto; min-height: 550px; position: relative; border-radius: 0;">
+            <div class="split-layout" style="margin-top: 50px; background: #fff; border-radius: 24px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+                <div class="image-side" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: 75% 25%; height: auto; min-height: 550px; position: relative; border-radius: 12px; overflow: hidden;">
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));"></div>
                 </div>
-                <div class="content-side" style="padding: 40px 50px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div class="content-side" style="padding: 24px 34px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                     
                     <ul class="podcast-list">
                         <li class="podcast-item active">
@@ -327,15 +327,12 @@
 
         <!-- III. Articles Section -->
     <section class="services-section section-padding" style="background-color: var(--bg-white);">
-        <div class="container reveal" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-            <div>
-                <h2 class="section-title">Blog and Articles</h2>
-                <div class="divider-terracotta"></div>
-                <p class="section-subtitle">Read the latest insights on change and leadership.</p>
-            </div>
-            
+        <div class="container reveal" style="text-align: center; margin-bottom: 40px; max-width: 1200px;">
+            <h2 class="section-title">Blog and Articles</h2>
+            <div class="divider-terracotta"></div>
+            <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Read the latest insights on change and leadership.</p>
         </div>
-        <div class="container reveal" style="position: relative;">
+        <div class="container reveal" style="position: relative; max-width: 1200px;">
             <button id="blog-prev" class="btn btn-outline" style="position: absolute; top: 50%; left: -70px; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; background: var(--bg-white); box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-left"></i></button>
             <button id="blog-next" class="btn btn-outline" style="position: absolute; top: 50%; right: -70px; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; background: var(--bg-white); box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-right"></i></button>
             <style>
@@ -344,7 +341,7 @@
                 }
                 .blog-card-carousel {
                     flex: 0 0 calc(33.333% - 20px);
-                    min-width: 320px;
+                    min-width: 300px;
                     scroll-snap-align: start;
                     background: #f5f5f7;
                     height: auto;
