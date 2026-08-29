@@ -234,7 +234,7 @@
                 Consulting, and Coaching to deliver results when change can’t afford to fail.</p>
             <div class="hero-cta">
                 <a class="btn hero-btn-primary" href="/contact">Book Tony</a>
-                <a class="btn hero-btn-secondary" href="#watch"><i class="fa-solid fa-play"></i> Watch Tony</a>
+                <button class="btn hero-btn-secondary" id="watchTonyBtn" onclick="openVideoModal()" type="button"><i class="fa-solid fa-play"></i> Watch Tony</button>
             </div>
         </div>
     </section>
@@ -864,6 +864,147 @@
 
         // Initial render
         initPodcastCarousel();
+    </script>
+
+    <!-- Video Modal -->
+    <div id="videoModal" role="dialog" aria-modal="true" aria-label="Watch Tony Video" style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+    ">
+        <!-- Backdrop -->
+        <div id="videoModalBackdrop" onclick="closeVideoModal()" style="
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 8, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        "></div>
+
+        <!-- Modal Card -->
+        <div id="videoModalCard" style="
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 880px;
+            background: rgba(15, 20, 40, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 107, 0, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            overflow: hidden;
+            transform: scale(0.88) translateY(24px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+        ">
+            <!-- Header -->
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 24px 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            ">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="
+                        width: 34px; height: 34px;
+                        background: linear-gradient(135deg, #FF6B00, #FF8C38);
+                        border-radius: 50%;
+                        display: flex; align-items: center; justify-content: center;
+                        box-shadow: 0 4px 14px rgba(255, 107, 0, 0.45);
+                    "><i class="fa-solid fa-play" style="color:#fff; font-size:12px; margin-left:2px;"></i></span>
+                    <div>
+                        <p style="margin:0; color:#fff; font-weight:700; font-size:15px; letter-spacing:0.02em;">Tony Chatman</p>
+                        <p style="margin:0; color:rgba(255,255,255,0.5); font-size:12px;">Keynote Speaker &amp; Executive Advisor</p>
+                    </div>
+                </div>
+                <button onclick="closeVideoModal()" aria-label="Close video" style="
+                    background: rgba(255,255,255,0.07);
+                    border: 1px solid rgba(255,255,255,0.12);
+                    border-radius: 50%;
+                    width: 36px; height: 36px;
+                    display: flex; align-items: center; justify-content: center;
+                    cursor: pointer;
+                    color: rgba(255,255,255,0.7);
+                    font-size: 14px;
+                    transition: background 0.2s, color 0.2s;
+                " onmouseover="this.style.background='rgba(255,107,0,0.2)';this.style.color='#fff';" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.7)';">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Video Wrapper -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <iframe
+                    id="videoModalIframe"
+                    src=""
+                    data-src="https://www.youtube.com/embed/614znBSyPzc?autoplay=1&rel=0"
+                    title="Tony Chatman - Watch Tony"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                ></iframe>
+            </div>
+
+            <!-- Footer accent -->
+            <div style="
+                height: 3px;
+                background: linear-gradient(90deg, #FF6B00, #FF8C38, transparent);
+                opacity: 0.7;
+            "></div>
+        </div>
+    </div>
+
+    <script>
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const backdrop = document.getElementById('videoModalBackdrop');
+            const card = document.getElementById('videoModalCard');
+            const iframe = document.getElementById('videoModalIframe');
+
+            iframe.src = iframe.getAttribute('data-src');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    backdrop.style.opacity = '1';
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1) translateY(0)';
+                });
+            });
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const backdrop = document.getElementById('videoModalBackdrop');
+            const card = document.getElementById('videoModalCard');
+            const iframe = document.getElementById('videoModalIframe');
+
+            backdrop.style.opacity = '0';
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.88) translateY(24px)';
+
+            setTimeout(() => {
+                modal.style.display = 'none';
+                iframe.src = '';
+                document.body.style.overflow = '';
+            }, 380);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
     </script>
 </body>
 
