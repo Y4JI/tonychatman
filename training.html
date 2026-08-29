@@ -11,10 +11,10 @@
 <style>
         /* Specific Styles for Training Page */
         .focus-card {
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
             transition: transform 0.3s ease;
             position: relative;
             display: flex;
@@ -25,12 +25,16 @@
         
         .focus-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
         }
 
         .focus-card-content {
-            padding: 20px 0 0;
+            padding: 16px 8px 8px;
             z-index: 2;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .focus-index {
@@ -45,13 +49,13 @@
             font-size: 24px;
             font-weight: 600;
             color: #1d1d1f;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
         
         .focus-topics {
             list-style: none;
             padding: 0;
-            margin: 0 0 20px 0;
+            margin: 0 0 16px 0;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -81,6 +85,7 @@
             align-items: center;
             font-weight: 600;
             margin-bottom: 0;
+            margin-top: auto;
         }
         .focus-link span {
             color: #FF6B00;
@@ -98,26 +103,59 @@
             height: auto;
             object-fit: cover;
             object-position: center;
-            border-radius: 4px;
+            border-radius: 8px;
             filter: sepia(20%) contrast(1.1) brightness(0.9);
+        }
+
+        .focus-card-wide {
+            flex-direction: row;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .focus-card-wide .focus-image {
+            width: 60%;
+            aspect-ratio: 21/9;
+        }
+        
+        .focus-card-wide .focus-card-content {
+            width: 40%;
+            padding: 0;
         }
 
         .focus-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 24px;
+            margin: 0 auto 60px auto;
+            max-width: 1200px !important;
         }
         
         @media (max-width: 992px) {
             .focus-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .focus-card-wide .focus-image {
+                aspect-ratio: 16/9;
+            }
         }
 
         @media (max-width: 768px) {
             .focus-grid {
                 grid-template-columns: 1fr;
+            }
+            .focus-card-wide {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+            .focus-card-wide .focus-image {
+                width: 100%;
+                aspect-ratio: 3/2;
+            }
+            .focus-card-wide .focus-card-content {
+                width: 100%;
+                padding: 20px 0 0;
             }
         }
         
@@ -410,7 +448,7 @@
 <a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
 </div>
-<div class="focus-card" style="grid-column: 2;">
+<div class="focus-card focus-card-wide" style="grid-column: 1 / -1;">
 <img alt="Development" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;q=80&amp;w=1600"/>
 <div class="focus-card-content">
 <div class="focus-index">07</div>
