@@ -11,90 +11,151 @@
 <style>
         /* Specific Styles for Training Page */
         .focus-card {
-            background: #f5f5f7;
-            border-radius: 24px;
-            padding: 0;
-            box-shadow: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
             transition: transform 0.3s ease;
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
         }
         
         .focus-card:hover {
-            transform: scale(1.02);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
         }
 
         .focus-card-content {
-            padding: 40px 30px 0;
+            padding: 16px 8px 8px;
             z-index: 2;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
+        .focus-index {
+            font-size: 13px;
+            font-weight: 700;
+            color: #FF6B00;
+            margin-bottom: 8px;
+            letter-spacing: 0.15em;
+        }
+
         .focus-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             color: #1d1d1f;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
         
         .focus-topics {
             list-style: none;
             padding: 0;
-            margin: 0 0 20px 0;
+            margin: 0 0 16px 0;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 8px;
         }
         
         .focus-topics li {
-            font-size: 15px;
-            color: #515154;
-            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            color: #86868b;
+            text-transform: none;
+            letter-spacing: normal;
+            display: inline-flex;
+            align-items: center;
         }
-        
+
         .focus-topics li:not(:last-child)::after {
-            content: " • ";
+            content: "•";
             margin-left: 8px;
             color: #86868b;
         }
 
         .focus-link {
-            font-size: 15px;
-            color: var(--accent-terracotta);
+            font-size: 14px;
+            color: #1d1d1f;
             text-decoration: none;
-            display: inline-block;
-            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
             font-weight: 600;
+            margin-bottom: 0;
+            margin-top: auto;
         }
-
-        .focus-link:hover {
-            text-decoration: underline;
-            color: var(--accent-terracotta-hover);
+        .focus-link span {
+            color: #FF6B00;
+            margin-left: 6px;
+            transition: transform 0.3s ease;
+            font-size: 16px;
+        }
+        .focus-link:hover span {
+            transform: translateX(4px);
         }
 
         .focus-image {
             width: 100%;
-            height: 300px;
+            aspect-ratio: 3/2;
+            height: auto;
             object-fit: cover;
             object-position: center;
-            margin-top: auto;
+            border-radius: 8px;
+            filter: sepia(20%) contrast(1.1) brightness(0.9);
+        }
+
+        .focus-card-wide {
+            flex-direction: row;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .focus-card-wide .focus-image {
+            width: 60%;
+            aspect-ratio: 21/9;
+        }
+        
+        .focus-card-wide .focus-card-content {
+            width: 40%;
+            padding: 0;
         }
 
         .focus-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            margin-bottom: 50px;
+            margin: 0 auto 60px auto;
+            max-width: 1200px !important;
         }
         
+        @media (max-width: 992px) {
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .focus-card-wide .focus-image {
+                aspect-ratio: 16/9;
+            }
+        }
+
         @media (max-width: 768px) {
             .focus-grid {
                 grid-template-columns: 1fr;
+            }
+            .focus-card-wide {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+            .focus-card-wide .focus-image {
+                width: 100%;
+                aspect-ratio: 3/2;
+            }
+            .focus-card-wide .focus-card-content {
+                width: 100%;
+                padding: 20px 0 0;
             }
         }
         
@@ -275,11 +336,11 @@
 <img alt="Training Workshops Background" decoding="async" fetchpriority="high" height="2001" src="Photos/D87A3378.edited.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" width="3000"/>
 </div>
 <div class="hero-content reveal">
-<h2 class="sub-heading" style="font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">Training &amp; Workshops</h2>
-<h1 class="main-heading">Training That Changes How People <span style="color: var(--accent-terracotta); font-style: italic;">Work</span></h1>
-<p class="hero-description">Hands-on, highly interactive workshops built around the science of resistance. Every program is tailored to your organization and designed to produce results that outlast the session.</p>
+<h2 class="sub-heading" style="font-size: 24px; color: #f5f5f7; text-transform: uppercase; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 20px;">TRAINING &amp; WORKSHOPS</h2>
+<h1 class="main-heading">Training That Changes How People <span style="color: #FF6B00; font-style: italic;">Work</span></h1>
+<p class="hero-description" style="color: #d2d2d7;">Hands-on, highly interactive workshops built around the science of resistance. Every program is tailored to your organization and designed to produce results that outlast the session.</p>
 <div class="hero-cta">
-<a class="btn" href="#focus">Choose Your Focus</a>
+<a class="btn" style="background-color: #FF6B00;" href="#focus" onmouseover="this.style.backgroundColor='#FF7A1A'" onmouseout="this.style.backgroundColor='#FF6B00'">Choose Your Focus</a>
 <a class="btn btn-outline-light" href="mailto:info@tonychatman.com">Schedule a Conversation</a>
 </div>
 </div>
@@ -295,11 +356,11 @@
 <p style="font-size: 17px; color: var(--text-color-secondary); margin-bottom: 20px;">Every workshop is hands-on, interactive, and tailored to fit the specific needs of your organization. Whether you need a focused half-day session or a multi-day program, your team will leave with tools, strategies, and systems they can use starting Monday.</p>
 <p style="font-size: 15px; color: var(--text-color-secondary); font-style: italic;">All workshops are available in-person or virtually.</p>
 </div>
-<div class="image-side reveal" style="background-image: url('Photos/DCB_5677%20copy.JPG'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; padding: 40px;">
-<div style="background: rgba(255,255,255,0.95); padding: 40px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); max-width: 80%; text-align: left; backdrop-filter: blur(10px);">
-<p style="font-size: 21px; font-weight: 400; font-style: italic; margin-bottom: 20px; color: var(--text-color); line-height: 1.4;">"I have taken 7 leadership courses in the last 3 years and this was the best."</p>
-<h4 style="font-size: 17px; font-weight: 600; margin-bottom: 5px;">Johnnie Powell</h4>
-<p style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-terracotta);">National Weather Service</p>
+<div class="image-side reveal" style="background-image: url('Photos/DCB_5677%20copy.JPG'); background-size: cover; background-position: center; display: flex; align-items: flex-end; justify-content: center; padding: 40px;">
+<div style="background: rgba(0,0,0,0.65); padding: 24px 30px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); max-width: 85%; text-align: left; backdrop-filter: blur(10px);">
+<p style="font-size: 20px; font-weight: 400; font-style: italic; margin-bottom: 15px; color: #fff; line-height: 1.4;">"I have taken 7 leadership courses in the last 3 years and this was the best."</p>
+<h4 style="font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #fff;">Johnnie Powell</h4>
+<p style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #FF6B00;">National Weather Service</p>
 </div>
 </div>
 </div>
@@ -314,83 +375,90 @@
 </div>
 <div class="container reveal focus-grid">
 <div class="focus-card">
+<img alt="Discovery" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">01</div>
 <h3 class="focus-title">Discovery</h3>
 <ul class="focus-topics">
 <li>Unconscious Bias</li>
 <li>Decision-Making</li>
 <li>Trust Building</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Discovery" class="focus-image" decoding="async" height="534" loading="lazy" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Strategy" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">02</div>
 <h3 class="focus-title">Strategy</h3>
 <ul class="focus-topics">
 <li>Change Management</li>
 <li>Change Leadership</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Strategy" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Commitment" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">03</div>
 <h3 class="focus-title">Commitment</h3>
 <ul class="focus-topics">
 <li>Culture</li>
 <li>Employee Engagement</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Commitment" class="focus-image" decoding="async" height="534" loading="lazy" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Leadership" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">04</div>
 <h3 class="focus-title">Leadership</h3>
 <ul class="focus-topics">
 <li>Leadership Development</li>
 <li>New Supervisor Training</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Leadership" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Communication" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">05</div>
 <h3 class="focus-title">Communication</h3>
 <ul class="focus-topics">
 <li>Communication</li>
 <li>Difficult Conversations</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Communication" class="focus-image" decoding="async" height="1200" loading="lazy" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="People" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">06</div>
 <h3 class="focus-title">People</h3>
 <ul class="focus-topics">
 <li>Team Building</li>
 <li>Generational Differences</li>
 <li>Overcoming Resistance</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="People" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
-<div class="focus-card" style="grid-column: 1 / -1;">
+<div class="focus-card focus-card-wide" style="grid-column: 1 / -1;">
+<img alt="Development" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;q=80&amp;w=1600"/>
 <div class="focus-card-content">
+<div class="focus-index">07</div>
 <h3 class="focus-title">Development</h3>
 <ul class="focus-topics">
 <li>Employee Development</li>
 <li>Performance Management</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Development" class="focus-image" decoding="async" height="1050" loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" style="height: 400px; max-width: 800px; border-radius: 12px; margin-bottom: 30px;" width="1600"/>
 </div>
 </div>
 <div class="container reveal">
@@ -411,22 +479,22 @@
 <p class="section-subtitle">Generic training produces generic results. Every program I deliver starts with understanding your specific challenges, your culture, and where resistance is actually running in your organization.</p>
 </div>
 <div class="container reveal how-it-works-grid">
-<div style="padding: 30px; background: var(--bg-color); border-radius: 18px; border-left: 5px solid var(--accent-terracotta);">
+<div style="padding: 30px; background: var(--bg-color); border-radius: 0 18px 18px 0; border-left: 5px solid var(--accent-terracotta);">
 <i class="fa-solid fa-bullseye" style="font-size: 32px; color: var(--accent-terracotta); margin-bottom: 20px;"></i>
 <h3 style="font-size: 21px; margin-bottom: 15px; font-weight: 600;">We start with your reality</h3>
 <p style="font-size: 17px; color: var(--text-color-secondary);">Every engagement begins with a discovery conversation to understand where resistance is running and what your team actually needs.</p>
 </div>
-<div style="padding: 30px; background: var(--bg-color); border-radius: 18px; border-left: 5px solid var(--accent-terracotta);">
+<div style="padding: 30px; background: var(--bg-color); border-radius: 0 18px 18px 0; border-left: 5px solid var(--accent-terracotta);">
 <i class="fa-solid fa-cogs" style="font-size: 32px; color: var(--accent-terracotta); margin-bottom: 20px;"></i>
 <h3 style="font-size: 21px; margin-bottom: 15px; font-weight: 600;">Content is tailored to fit</h3>
 <p style="font-size: 17px; color: var(--text-color-secondary);">Programs are adapted to your industry, culture, and specific challenges. You won't get a recycled deck from last month's client.</p>
 </div>
-<div style="padding: 30px; background: var(--bg-color); border-radius: 18px; border-left: 5px solid var(--accent-terracotta);">
+<div style="padding: 30px; background: var(--bg-color); border-radius: 0 18px 18px 0; border-left: 5px solid var(--accent-terracotta);">
 <i class="fa-solid fa-brain" style="font-size: 32px; color: var(--accent-terracotta); margin-bottom: 20px;"></i>
 <h3 style="font-size: 21px; margin-bottom: 15px; font-weight: 600;">Highly interactive delivery</h3>
 <p style="font-size: 17px; color: var(--text-color-secondary);">Assessment tools, group activities, role-playing, and scenario-based learning. People are engaged, not just attending.</p>
 </div>
-<div style="padding: 30px; background: var(--bg-color); border-radius: 18px; border-left: 5px solid var(--accent-terracotta);">
+<div style="padding: 30px; background: var(--bg-color); border-radius: 0 18px 18px 0; border-left: 5px solid var(--accent-terracotta);">
 <i class="fa-solid fa-chart-line" style="font-size: 32px; color: var(--accent-terracotta); margin-bottom: 20px;"></i>
 <h3 style="font-size: 21px; margin-bottom: 15px; font-weight: 600;">Results that outlast the room</h3>
 <p style="font-size: 17px; color: var(--text-color-secondary);">The goal is behavior change, not event satisfaction. Participants leave with frameworks they can use immediately and return to over time.</p>
