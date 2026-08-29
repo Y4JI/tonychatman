@@ -11,31 +11,38 @@
 <style>
         /* Specific Styles for Training Page */
         .focus-card {
-            background: #f5f5f7;
-            border-radius: 24px;
+            background: transparent;
+            border-radius: 0;
             padding: 0;
             box-shadow: none;
             transition: transform 0.3s ease;
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
         }
         
         .focus-card:hover {
-            transform: scale(1.02);
+            transform: translateY(-4px);
         }
 
         .focus-card-content {
-            padding: 40px 30px 0;
+            padding: 20px 0 0;
             z-index: 2;
             width: 100%;
         }
         
+        .focus-index {
+            font-size: 13px;
+            font-weight: 700;
+            color: #FF6B00;
+            margin-bottom: 8px;
+            letter-spacing: 0.15em;
+        }
+
         .focus-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             color: #1d1d1f;
             margin-bottom: 12px;
@@ -47,51 +54,67 @@
             margin: 0 0 20px 0;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 8px;
         }
         
         .focus-topics li {
-            font-size: 15px;
-            color: #515154;
-            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            color: #86868b;
+            text-transform: none;
+            letter-spacing: normal;
+            display: inline-flex;
+            align-items: center;
         }
-        
+
         .focus-topics li:not(:last-child)::after {
-            content: " • ";
+            content: "•";
             margin-left: 8px;
             color: #86868b;
         }
 
         .focus-link {
-            font-size: 15px;
-            color: var(--accent-terracotta);
+            font-size: 14px;
+            color: #1d1d1f;
             text-decoration: none;
-            display: inline-block;
-            margin-bottom: 30px;
+            display: inline-flex;
+            align-items: center;
             font-weight: 600;
+            margin-bottom: 0;
         }
-
-        .focus-link:hover {
-            text-decoration: underline;
-            color: var(--accent-terracotta-hover);
+        .focus-link span {
+            color: #FF6B00;
+            margin-left: 6px;
+            transition: transform 0.3s ease;
+            font-size: 16px;
+        }
+        .focus-link:hover span {
+            transform: translateX(4px);
         }
 
         .focus-image {
             width: 100%;
-            height: 300px;
+            aspect-ratio: 3/2;
+            height: auto;
             object-fit: cover;
             object-position: center;
-            margin-top: auto;
+            border-radius: 4px;
+            filter: sepia(20%) contrast(1.1) brightness(0.9);
         }
 
         .focus-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
         }
         
+        @media (max-width: 992px) {
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .focus-grid {
                 grid-template-columns: 1fr;
@@ -314,83 +337,90 @@
 </div>
 <div class="container reveal focus-grid">
 <div class="focus-card">
+<img alt="Discovery" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">01</div>
 <h3 class="focus-title">Discovery</h3>
 <ul class="focus-topics">
 <li>Unconscious Bias</li>
 <li>Decision-Making</li>
 <li>Trust Building</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Discovery" class="focus-image" decoding="async" height="534" loading="lazy" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Strategy" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">02</div>
 <h3 class="focus-title">Strategy</h3>
 <ul class="focus-topics">
 <li>Change Management</li>
 <li>Change Leadership</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Strategy" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Commitment" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">03</div>
 <h3 class="focus-title">Commitment</h3>
 <ul class="focus-topics">
 <li>Culture</li>
 <li>Employee Engagement</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Commitment" class="focus-image" decoding="async" height="534" loading="lazy" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Leadership" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">04</div>
 <h3 class="focus-title">Leadership</h3>
 <ul class="focus-topics">
 <li>Leadership Development</li>
 <li>New Supervisor Training</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Leadership" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="Communication" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">05</div>
 <h3 class="focus-title">Communication</h3>
 <ul class="focus-topics">
 <li>Communication</li>
 <li>Difficult Conversations</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Communication" class="focus-image" decoding="async" height="1200" loading="lazy" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
 <div class="focus-card">
+<img alt="People" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;q=80&amp;w=800"/>
 <div class="focus-card-content">
+<div class="focus-index">06</div>
 <h3 class="focus-title">People</h3>
 <ul class="focus-topics">
 <li>Team Building</li>
 <li>Generational Differences</li>
 <li>Overcoming Resistance</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="People" class="focus-image" decoding="async" height="533" loading="lazy" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;q=80&amp;w=800" width="800"/>
 </div>
-<div class="focus-card" style="grid-column: 1 / -1;">
+<div class="focus-card" style="grid-column: 2;">
+<img alt="Development" class="focus-image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;q=80&amp;w=1600"/>
 <div class="focus-card-content">
+<div class="focus-index">07</div>
 <h3 class="focus-title">Development</h3>
 <ul class="focus-topics">
 <li>Employee Development</li>
 <li>Performance Management</li>
 </ul>
-<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <i class="fa-solid fa-angle-right"></i></a>
+<a class="focus-link" href="mailto:info@tonychatman.com">Learn more <span>&rarr;</span></a>
 </div>
-<img alt="Development" class="focus-image" decoding="async" height="1050" loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" style="height: 400px; max-width: 800px; border-radius: 12px; margin-bottom: 30px;" width="1600"/>
 </div>
 </div>
 <div class="container reveal">
