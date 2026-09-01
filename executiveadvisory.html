@@ -423,15 +423,73 @@
             </div>
         </div>
     </div>
+    <!-- Header Navigation -->
+    <header class="main-header" id="mainHeader">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="/speaking">SPEAKING</a></li>
+                <li><a href="/training">TRAINING</a></li>
+                <li><a href="/executiveadvisory">EXECUTIVE ADVISORY</a></li>
+            </ul>
+        </nav>
+        <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
+            <a class="logo" href="/">
+                <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo"
+                    style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
+            </a>
+        </div>
+        <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="/resources">RESOURCES</a></li>
+                <li><a href="/meet-tony" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
+            </ul>
+        </nav>
+    </header>
 
-
-
+    <!-- Hero Section -->
+    <section class="hero-section hero-left-aligned" style="position: relative; z-index: 0; min-height: 60vh; display: flex; align-items: center; overflow: hidden; padding-top: 100px;">
+        <style>
+            .hero-section {
+                padding: 150px 0 100px 0;
+            }
+            .hero-content {
+                padding-left: 8%;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .text-orange-high-contrast {
+                color: #FF6B00;
+            }
+            @media (max-width: 768px) {
+                .hero-content {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+        </style>
+        <div class="image-container"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #0A0F1D;">
+            <img src="Photos/hero-section-bg.jpeg" alt="Executive Advisory" style="width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.5) desaturate(0.2);" />
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(10, 15, 29, 0.9) 0%, rgba(10, 15, 29, 0.4) 100%);">
+            </div>
+        </div>
+        <div class="hero-content reveal" style="position: relative; z-index: 10;">
+            <h2 class="sub-heading text-orange-high-contrast"
+                style="color: #FF6B00 !important; font-weight: 600; letter-spacing: 0.15em; font-size: 18px; text-transform: uppercase;">TONY CHATMAN</h2>
+            <h1 class="main-heading" style="color: #FFFFFF; font-size: 5rem; line-height: 1.1; margin: 15px 0;">Executive <br /><span class="text-orange-high-contrast">Advisory</span></h1>
+            <p class="hero-description" style="color: #F8FAFC; font-weight: 400; line-height: 1.6; max-width: 700px; font-size: 1.4rem; margin-top: 20px;">
+                Working partnership with a seasoned expert for leaders driving high-stakes change and strategy.
+            </p>
+        </div>
+    </section>
 
     <!-- Main Layout -->
-    <section class="layout-container">
+    <section class="layout-container" style="margin-top: 40px;">
         <!-- Left Column: Main Content -->
         <div class="main-content">
-            <h2>Executive Advisory</h2>
 
             <div class="quote-block reveal">
                 <p>"The pace of business has changed. The way most businesses and leaders make decisions hasn’t. "</p>
