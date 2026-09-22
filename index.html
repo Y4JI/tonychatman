@@ -103,41 +103,27 @@
             .main-header .logo img {
                 height: 28px !important;
             }
-        }
 
-        /* Explicit enforcement of uniform sizes */
-        .main-header {
-            height: 64px !important;
-            padding: 0 35px !important;
-            box-sizing: border-box !important;
-        }
+            /* Explicit enforcement of uniform sizes on desktop */
+            .main-header ul {
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 30px !important;
+            }
 
-        .main-header .logo img {
-            height: 35px !important;
-            width: auto !important;
-            display: inline-block !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
+            .main-header ul li {
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
 
-        .main-header ul {
-            margin: 0 !important;
-            padding: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 30px !important;
-        }
-
-        .main-header ul li {
-            list-style: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .top-utility-bar {
-            height: 45px !important;
-            padding: 0 40px !important;
-            box-sizing: border-box !important;
+            .top-utility-bar {
+                height: 45px !important;
+                padding: 0 40px !important;
+                box-sizing: border-box !important;
+            }
         }
     </style>
 
@@ -175,7 +161,7 @@
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="/">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
                 <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo"
                     style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
@@ -183,11 +169,46 @@
         <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
             <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
                 <li><a href="/resources">RESOURCES</a></li>
-                <li><a href="/meet-tony" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a href="/meet-tony" style="color: #FF6B00;">MEET TONY</a></li>
                 <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true"
+        aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/meet-tony" style="color: #FF6B00;">Meet Tony</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i
+                        class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- I. Hero Section -->
     <section class="hero-section hero-left-aligned" style="position: relative; z-index: 0;">
         <style>
@@ -223,7 +244,7 @@
         </style>
         <div class="image-container"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #0A0F1D;">
-            <video autoplay loop muted playsinline
+            <video autoplay loop muted playsinline preload="auto" poster="Photos/VIdeos/tony-002-poster.jpg"
                 style="width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%; filter: brightness(0.6) desaturate(0.4);">
                 <source src="Photos/VIdeos/tony-002.mp4" type="video/mp4">
             </video>
@@ -352,9 +373,10 @@
         </div>
         <div class="carousel-container reveal">
             <div class="carousel-track" id="change-track">
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="AI Initiative"
+                    data-concept="leadership artificial intelligence technology disruption board">
                     <div class="card-image"
-                        style="background-image: url('Photos/031023%20PICZ%20-%20NSA-0595.JPG'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -364,9 +386,10 @@
                         <button class="plus-btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="Public Crisis"
+                    data-concept="press conference media microphones crisis management scrutiny">
                     <div class="card-image"
-                        style="background-image: url('Photos/031023%20PICZ%20-%20NSA-0926.JPG'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -375,9 +398,10 @@
                         <button class="plus-btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="Revealing Survey"
+                    data-concept="leadership analyzing difficult feedback survey data corporate table">
                     <div class="card-image"
-                        style="background-image: url('Photos/D87A3369.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -386,9 +410,10 @@
                         <button class="plus-btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="Merger or Acquisition"
+                    data-concept="corporate merger acquisition executives meeting negotiation handshake">
                     <div class="card-image"
-                        style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -397,9 +422,10 @@
                         <button class="plus-btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="Digital Transformation"
+                    data-concept="digital transformation infrastructure tech data analytics board">
                     <div class="card-image"
-                        style="background-image: url('Photos/DCB_5615.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -408,9 +434,10 @@
                         <button class="plus-btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="carousel-card">
+                <div class="carousel-card" data-category="Talent Exodus"
+                    data-concept="empty office desks executive departure talent turnover exodus">
                     <div class="card-image"
-                        style="background-image: url('Photos/SPC_2104.edited.jpg'); background-size: cover; background-position: center;">
+                        style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
@@ -461,7 +488,7 @@
         </div>
         <div class="container services-grid reveal">
             <div class="service-card">
-                <div class="service-card-bg" style="background-image: url('Photos/DCB_5615.jpg');"></div>
+                <div class="service-card-bg" style="background-image: url('Photos/D87A3378.edited.jpg');"></div>
                 <div class="service-card-overlay"></div>
                 <div class="service-card-content">
                     <h3>Keynotes</h3>
@@ -563,6 +590,28 @@
                 <a class="btn"
                     href="https://www.amazon.com/Force-Multiplier-Teams-Where-Everyone/dp/0998992704/ref=sr_1_2?crid=17VBT83AI3OI0&keywords=the+force+multiplier&qid=1569426350&s=gateway&sprefix=the+force+mu%2Cstripbooks%2C157&sr=8-2"
                     style="padding: 14px 48px;">Order Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- IX.5 Force Multiplier Assessment Banner -->
+    <section class="force-multiplier-banner" id="assessment-banner">
+        <div class="container reveal force-multiplier-inner">
+            <div class="fm-icon-wrap" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="21" stroke="#f5eb26" stroke-width="3.5" fill="none"/>
+                    <polygon points="31,16 17,22 22,26" fill="none" stroke="#f5eb26" stroke-width="2.2" stroke-linejoin="round"/>
+                    <polygon points="31,16 22,26 26,30" fill="#f5eb26" stroke="#f5eb26" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2 class="fm-title">
+                Discover How Your Personality<br />Can Make You a Force Multiplier
+            </h2>
+            <div class="fm-btn-frame">
+                <span class="fm-corner-bracket fm-corner-tr" aria-hidden="true"></span>
+                <span class="fm-corner-bracket fm-corner-bl" aria-hidden="true"></span>
+                <a href="https://resistancepoints-fd4zauoy.scoreapp.com" target="_blank" rel="noopener noreferrer" class="fm-btn">
+                    Take The <span class="fm-btn-highlight">Assessment</span>
+                </a>
             </div>
         </div>
     </section>
@@ -744,7 +793,40 @@
         </div>
     </footer>
     <script>
-        // Simple Carousel Logic for High Stakes Change - Removed in favor of CSS horizontal scroll
+        // High Stakes Change Card Image Resolver & Registry for Dynamic / Future Cards
+        (function () {
+            const highStakesImageRegistry = {
+                'ai initiative': 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
+                'public crisis': 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80',
+                'revealing survey': 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80',
+                'merger or acquisition': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
+                'digital transformation': 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+                'talent exodus': 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80'
+            };
+
+            const conceptDefaults = [
+                'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
+                'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+                'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80'
+            ];
+
+            const cards = document.querySelectorAll('.high-stakes-section .carousel-card');
+            cards.forEach((card, idx) => {
+                const imgEl = card.querySelector('.card-image');
+                if (!imgEl) return;
+
+                // Fallback only if no background image is specified
+                const currentBg = imgEl.style.backgroundImage || '';
+                const title = (card.querySelector('h3')?.textContent || '').toLowerCase().trim();
+
+                if (!currentBg || currentBg === 'none') {
+                    const matchedUrl = highStakesImageRegistry[title] || conceptDefaults[idx % conceptDefaults.length];
+                    imgEl.style.backgroundImage = `url('${matchedUrl}')`;
+                    imgEl.style.backgroundSize = 'cover';
+                    imgEl.style.backgroundPosition = 'center';
+                }
+            });
+        })();
 
         // Simple Carousel Logic for Testimonials
         const testTrack = document.getElementById('testimonial-track');
@@ -791,13 +873,52 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                topUtilityBar.classList.add('scrolled');
-                mainHeader.classList.add('scrolled');
+                if (topUtilityBar) topUtilityBar.classList.add('scrolled');
+                if (mainHeader) mainHeader.classList.add('scrolled');
             } else {
-                topUtilityBar.classList.remove('scrolled');
-                mainHeader.classList.remove('scrolled');
+                if (topUtilityBar) topUtilityBar.classList.remove('scrolled');
+                if (mainHeader) mainHeader.classList.remove('scrolled');
             }
         });
+
+        // Mobile Menu Drawer Logic
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavIcon = document.getElementById('mobileNavIcon');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenuOverlay.classList.toggle('is-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileNavIcon.classList.remove('fa-bars');
+                mobileNavIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNavIcon.classList.remove('fa-xmark');
+                mobileNavIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (mobileNavToggle && mobileMenuOverlay) {
+            mobileNavToggle.addEventListener('click', toggleMobileMenu);
+
+            // Close menu on any link click
+            mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenuOverlay.classList.contains('is-open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('is-open')) {
+                    toggleMobileMenu();
+                }
+            });
+        }
 
         // Podcast Carousel Logic
         const podcastPhotos = [
@@ -818,22 +939,33 @@
 
         function initPodcastCarousel() {
             podcastCoverflow.innerHTML = '';
+            carouselItems.length = 0;
+            const isMobile = window.innerWidth <= 576;
+            const isTablet = window.innerWidth <= 991 && !isMobile;
+
+            const itemHeight = isMobile ? '160px' : (isTablet ? '200px' : '250px');
+            const itemWidth = isMobile ? '160px' : (isTablet ? '200px' : '250px');
+            const itemMargin = isMobile ? '0 -25px' : (isTablet ? '0 -45px' : '0 -70px');
+
             for (let i = 0; i < 3; i++) {
                 const item = document.createElement('img');
                 item.className = 'coverflow-item';
-                item.style.height = '250px';
-                item.style.width = 'auto'; // override CSS default width
-                item.style.background = 'transparent';
-                item.style.objectFit = 'contain';
+                item.style.height = itemHeight;
+                item.style.width = itemWidth;
+                item.style.maxWidth = itemWidth;
+                item.style.flexShrink = '0';
+                item.style.display = 'block';
+                item.style.background = '#1a1f2c';
+                item.style.objectFit = 'cover';
                 item.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease, z-index 0.4s ease, border 0.4s ease, opacity 0.4s ease, margin 0.4s ease';
-                item.style.borderRadius = '20px';
+                item.style.borderRadius = isMobile ? '14px' : '20px';
 
                 if (i === 1) { // Middle item
                     item.style.transform = 'scale(1.1)';
-                    item.style.boxShadow = '0 20px 40px rgba(184,79,41,0.4)';
+                    item.style.boxShadow = '0 16px 36px rgba(184,79,41,0.45)';
                     item.style.zIndex = '3';
                     item.style.border = '3px solid var(--accent-terracotta)';
-                    item.style.margin = '0 -70px'; // Pull side items behind
+                    item.style.margin = itemMargin; // Pull side items behind
                     item.style.filter = 'brightness(1)';
                 } else {
                     item.style.transform = 'scale(0.85)';
@@ -841,7 +973,7 @@
                     item.style.zIndex = '1';
                     item.style.border = 'none';
                     item.style.margin = '0';
-                    item.style.filter = 'brightness(0.5)';
+                    item.style.filter = 'brightness(0.4)';
                 }
 
                 carouselItems.push(item);
@@ -858,12 +990,14 @@
             const indices = [prevIndex, podcastIndex, nextIndex];
 
             indices.forEach((idx, i) => {
+                if (!carouselItems[i]) return;
                 // To create a slight fade effect when changing images
                 carouselItems[i].style.opacity = '0.5';
                 setTimeout(() => {
                     carouselItems[i].src = podcastPhotos[idx];
+                    carouselItems[i].alt = 'Podcast Cover ' + (idx + 1);
                     carouselItems[i].style.opacity = '1';
-                }, 150);
+                }, 120);
 
                 // Add click events for side navigation
                 carouselItems[i].onclick = null; // reset
@@ -897,6 +1031,15 @@
 
         // Initial render
         initPodcastCarousel();
+
+        // Responsive re-init on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                initPodcastCarousel();
+            }, 200);
+        });
     </script>
 
     <!-- Video Modal -->

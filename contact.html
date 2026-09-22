@@ -354,21 +354,8 @@
             .main-header .logo img {
                 height: 28px !important;
             }
-        }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
+
+            /* Explicit enforcement of uniform sizes on desktop */
             .main-header ul {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -386,7 +373,7 @@
                 padding: 0 40px !important;
                 box-sizing: border-box !important;
             }
-
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -418,7 +405,7 @@
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="/">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
                 <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
         </div>
@@ -429,7 +416,35 @@
                 <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/meet-tony" style="color: #FF6B00;">Meeting Planners</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="contact-hero">
@@ -712,6 +727,43 @@
                 if(mainHeader) mainHeader.classList.remove('scrolled');
             }
         });
+
+        // Mobile Menu Drawer Logic
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavIcon = document.getElementById('mobileNavIcon');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenuOverlay.classList.toggle('is-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileNavIcon.classList.remove('fa-bars');
+                mobileNavIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNavIcon.classList.remove('fa-xmark');
+                mobileNavIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (mobileNavToggle && mobileMenuOverlay) {
+            mobileNavToggle.addEventListener('click', toggleMobileMenu);
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenuOverlay.classList.contains('is-open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('is-open')) {
+                    toggleMobileMenu();
+                }
+            });
+        }
     </script>
 </body>
 

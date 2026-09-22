@@ -9,14 +9,128 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="apple.css">
     <style>
+        /* =========================================================
+           Enhanced Podcast Player Styling & Mobile Responsiveness
+           ========================================================= */
+
+        .podcast-player-card {
+            margin-top: 50px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            align-items: stretch;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .split-layout.podcast-player-card .podcast-image-side,
+        .podcast-image-side {
+            background-image: url('Photos/D87A3378.edited.jpg') !important;
+            background-size: cover !important;
+            background-position: 75% 25% !important;
+            background-repeat: no-repeat !important;
+            background-color: #1d1d1f;
+            height: auto;
+            min-height: 550px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .podcast-image-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.15));
+            pointer-events: none;
+        }
+
+        .podcast-image-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            background: rgba(10, 15, 29, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 20px 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #ffffff;
+            z-index: 2;
+        }
+
+        .podcast-badge-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #FF6B00;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .podcast-badge-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .podcast-badge-desc {
+            font-size: 13px;
+            color: #d2d2d7;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .podcast-content-side {
+            padding: 24px 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-width: 0;
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        .podcast-list-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0f0f4;
+        }
+
+        .podcast-list-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #86868b;
+        }
+
+        .podcast-badge-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+            background: rgba(184, 79, 41, 0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
         .podcast-list {
             list-style: none;
             margin: 0;
             padding: 0;
-            max-height: 380px;
+            max-height: 390px;
             overflow-y: auto;
             scrollbar-width: thin;
-            padding-right: 15px;
+            padding-right: 10px;
         }
         
         .podcast-list::-webkit-scrollbar {
@@ -30,50 +144,500 @@
             background: #d2d2d7;
             border-radius: 4px;
         }
+        .podcast-list::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b5;
+        }
 
         .podcast-item {
-            padding: 16px 0;
-            border-bottom: 1px solid #e5e5ea;
+            padding: 12px 14px;
+            border-radius: 12px;
+            margin-bottom: 6px;
+            border: 1px solid transparent;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
             cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .podcast-item:last-child {
-            border-bottom: none;
+            transition: all 0.25s ease;
+            background: transparent;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .podcast-item:hover {
-            opacity: 0.7;
+            background: #f8f8fa;
+            border-color: #ededf0;
+        }
+        
+        .podcast-item.active {
+            background: rgba(184, 79, 41, 0.08);
+            border-color: rgba(184, 79, 41, 0.25);
         }
         
         .podcast-item.active .podcast-title {
-            color: var(--text-color);
-            font-weight: 500;
+            color: #1d1d1f;
+            font-weight: 600;
         }
         
-        .podcast-item.active .fa-play {
-            color: var(--accent-terracotta);
+        .podcast-item .play-btn-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f0f0f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            color: #86868b;
+            font-size: 11px;
+        }
+
+        .podcast-item:hover .play-btn-circle {
+            background: var(--accent-terracotta);
+            color: #ffffff;
+            transform: scale(1.06);
+        }
+
+        .podcast-item.active .play-btn-circle {
+            background: var(--accent-terracotta);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(184, 79, 41, 0.35);
+        }
+
+        .podcast-title-wrap {
+            flex-grow: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .podcast-title {
-            font-weight: 400;
-            font-size: 16px;
-            color: var(--text-color-secondary);
-            flex-grow: 1;
+            font-weight: 450;
+            font-size: 15px;
+            color: #333336;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: color 0.2s;
         }
-        
-        .podcast-item .fa-play {
-            color: var(--text-color-secondary);
+
+        .podcast-meta {
             font-size: 12px;
-            width: 16px;
+            color: #86868b;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
-        .podcast-item .fa-cloud {
-            color: var(--text-color-secondary);
-            font-size: 14px;
+
+        /* Sound Wave Animation */
+        .sound-wave {
+            display: none;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+        .podcast-item.active.is-playing .sound-wave {
+            display: inline-flex;
+        }
+        .podcast-item.active.is-playing .podcast-cloud-icon {
+            display: none;
+        }
+        .sound-wave span {
+            display: inline-block;
+            width: 2.5px;
+            background-color: var(--accent-terracotta);
+            border-radius: 2px;
+            animation: waveBounce 1s infinite ease-in-out;
+        }
+        .sound-wave span:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+        .sound-wave span:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+        .sound-wave span:nth-child(3) { height: 9px; animation-delay: 0.2s; }
+        .sound-wave span:nth-child(4) { height: 12px; animation-delay: 0.4s; }
+
+        @keyframes waveBounce {
+            0%, 100% { transform: scaleY(0.4); }
+            50% { transform: scaleY(1); }
+        }
+
+        /* Scrubber Bar styling */
+        .podcast-player-deck {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #e5e5ea;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .scrubber-container {
+            width: 100%;
+            padding: 8px 0;
+            cursor: pointer;
+            touch-action: none;
+            user-select: none;
+        }
+        .scrubber-track {
+            width: 100%;
+            height: 5px;
+            background: #e5e5ea;
+            border-radius: 99px;
+            position: relative;
+            transition: height 0.15s ease;
+        }
+        .scrubber-container:hover .scrubber-track {
+            height: 7px;
+        }
+        .scrubber-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-terracotta), #f97316);
+            border-radius: 99px;
+            position: relative;
+            pointer-events: none;
+        }
+        .scrubber-thumb {
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border: 2px solid var(--accent-terracotta);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+            transition: transform 0.15s ease;
+            pointer-events: none;
+        }
+        .scrubber-container:hover .scrubber-thumb {
+            transform: translateY(-50%) scale(1);
+        }
+
+        .podcast-time-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #86868b;
+            margin-top: 2px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Player Controls & Footer */
+        .podcast-player-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            gap: 16px;
+            flex-wrap: wrap;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .podcast-now-playing {
+            min-width: 0;
+            flex: 1 1 200px;
+        }
+
+        .podcast-now-playing-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        .podcast-now-playing-label span:first-child {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-terracotta);
+            font-weight: 700;
+        }
+
+        #playerStatusDot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #86868b;
+            display: inline-block;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        #playerTitle {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1d1d1f;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #playerMeta {
+            font-size: 12px;
+            color: #86868b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 2px;
+        }
+
+        .podcast-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .player-control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1d1d1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .player-control-btn:hover {
+            color: var(--accent-terracotta);
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .player-play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-terracotta);
+            color: #ffffff !important;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 14px rgba(184, 79, 41, 0.35);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .player-play-btn:hover {
+            transform: scale(1.06);
+            background: var(--accent-terracotta-hover);
+        }
+
+        /* =========================================================
+           Responsive Rules for Tablet & Mobile
+           ========================================================= */
+        @media (max-width: 991px) {
+            .split-layout.podcast-player-card {
+                flex-direction: column !important;
+                gap: 20px !important;
+                margin-top: 35px !important;
+                padding: 14px !important;
+                border-radius: 20px !important;
+            }
+
+            .split-layout.podcast-player-card .podcast-image-side,
+            .podcast-image-side {
+                width: 100% !important;
+                height: 280px !important;
+                min-height: 280px !important;
+                background-position: center 25% !important;
+                border-radius: 14px !important;
+            }
+
+            .podcast-image-badge {
+                bottom: 16px;
+                left: 16px;
+                right: 16px;
+                padding: 14px 18px;
+                border-radius: 14px;
+            }
+
+            .podcast-content-side {
+                padding: 12px 14px 16px !important;
+                width: 100% !important;
+            }
+
+            .podcast-list {
+                max-height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .scrubber-thumb {
+                transform: translateY(-50%) scale(1) !important;
+                width: 13px !important;
+                height: 13px !important;
+            }
+            .scrubber-track {
+                height: 6px !important;
+            }
+            .scrubber-container {
+                padding: 12px 0 !important;
+            }
+
+            .podcast-player-footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 14px;
+            }
+
+            .podcast-now-playing {
+                width: 100%;
+                text-align: center;
+            }
+
+            .podcast-now-playing-label {
+                justify-content: center;
+            }
+
+            #playerTitle {
+                text-align: center;
+                font-size: 14.5px;
+            }
+
+            #playerMeta {
+                text-align: center;
+                font-size: 12px;
+            }
+
+            .podcast-controls {
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .split-layout.podcast-player-card {
+                padding: 10px !important;
+                border-radius: 16px !important;
+                gap: 14px !important;
+                margin-top: 25px !important;
+            }
+
+            .split-layout.podcast-player-card .podcast-image-side,
+            .podcast-image-side {
+                height: 210px !important;
+                min-height: 210px !important;
+                border-radius: 12px !important;
+                background-position: center 20% !important;
+            }
+
+            .podcast-image-badge {
+                bottom: 10px !important;
+                left: 10px !important;
+                right: 10px !important;
+                padding: 10px 12px !important;
+                border-radius: 10px !important;
+            }
+
+            .podcast-badge-tag {
+                font-size: 10px !important;
+                letter-spacing: 1px !important;
+                margin-bottom: 2px !important;
+            }
+
+            .podcast-badge-title {
+                font-size: 14.5px !important;
+                line-height: 1.25 !important;
+            }
+
+            .podcast-badge-desc {
+                font-size: 11.5px !important;
+                margin-top: 4px !important;
+                line-height: 1.35 !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .podcast-content-side {
+                padding: 6px 4px 10px !important;
+            }
+
+            .podcast-list-header {
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+            }
+
+            .podcast-list {
+                max-height: 280px;
+                padding-right: 4px;
+            }
+
+            .podcast-item {
+                padding: 10px 8px !important;
+                gap: 10px !important;
+                margin-bottom: 4px !important;
+                border-radius: 10px !important;
+            }
+
+            .podcast-item .play-btn-circle {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 10px !important;
+            }
+
+            .podcast-title {
+                font-size: 13.5px !important;
+            }
+
+            .podcast-meta {
+                font-size: 11px !important;
+            }
+
+            .podcast-controls {
+                gap: 6px !important;
+            }
+
+            .player-control-btn {
+                width: 34px !important;
+                height: 34px !important;
+                font-size: 13px !important;
+            }
+
+            .player-play-btn {
+                width: 44px !important;
+                height: 44px !important;
+                font-size: 15px !important;
+            }
+        }
+
+        @media (max-width: 374px) {
+            .podcast-controls {
+                gap: 4px !important;
+            }
+
+            .player-control-btn {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 11.5px !important;
+            }
+
+            .player-play-btn {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 13px !important;
+            }
+
+            .podcast-title {
+                font-size: 12.5px !important;
+            }
+
+            .podcast-item {
+                padding: 8px 6px !important;
+                gap: 8px !important;
+            }
         }
     </style>
 </head>
@@ -157,21 +721,8 @@
             .main-header .logo img {
                 height: 28px !important;
             }
-        }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
+
+            /* Explicit enforcement of uniform sizes on desktop */
             .main-header ul {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -189,7 +740,7 @@
                 padding: 0 40px !important;
                 box-sizing: border-box !important;
             }
-
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -221,7 +772,7 @@
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="/">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
                 <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
         </div>
@@ -232,7 +783,35 @@
                 <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/meet-tony" style="color: #FF6B00;">Meeting Planners</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- I. Hero Section -->
     <section class="hero-section" style="height: 60vh; min-height: 500px;">
@@ -252,81 +831,491 @@
             <h2 class="section-title" style="color: #ffffff;">Featured Podcasts</h2>
             <div class="divider-terracotta" style="background-color: #ffffff;"></div>
             
-            <div class="split-layout" style="margin-top: 50px; background: #fff; border-radius: 24px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
-                <div class="image-side" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: 75% 25%; height: auto; min-height: 550px; position: relative; border-radius: 12px; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));"></div>
+            <div class="split-layout podcast-player-card">
+                <div class="image-side podcast-image-side" style="background-image: url('Photos/D87A3378.edited.jpg'); background-size: cover; background-position: 75% 25%;">
+                    <div class="podcast-image-gradient"></div>
+                    <div class="podcast-image-badge">
+                        <div class="podcast-badge-tag">Audio Library</div>
+                        <div class="podcast-badge-title">18 Keynote & Podcast Sessions</div>
+                        <div class="podcast-badge-desc">Real conversations on unconscious bias, authentic leadership, culture, and high-performing teams.</div>
+                    </div>
                 </div>
-                <div class="content-side" style="padding: 24px 34px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div class="content-side podcast-content-side">
                     
-                    <ul class="podcast-list">
-                        <li class="podcast-item active">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">TMG "SNAP JUDGEMENTS"</span>
+                    <div class="podcast-list-header">
+                        <span class="podcast-list-label">Select Episode</span>
+                        <span class="podcast-badge-count">18 Episodes</span>
+                    </div>
+
+                    <ul class="podcast-list" id="podcastList">
+                        <li class="podcast-item active" data-src="Audios/TMG-22SNAP-JUDGEMENTS22.mp3" data-title='TMG "SNAP JUDGEMENTS"' data-meta="Tony Chatman on Bias & Quick Decisions">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">TMG "SNAP JUDGEMENTS"</span>
+                                <span class="podcast-meta">Tony Chatman on Bias & Quick Decisions</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Story Samurai AI</span>
+                        <li class="podcast-item" data-src="Audios/Story-Samurai-AI.mp3" data-title="Story Samurai AI" data-meta="Story Samurai AI Podcast with Tony Chatman">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Story Samurai AI</span>
+                                <span class="podcast-meta">Story Samurai AI Podcast with Tony Chatman</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">EEC 339: Light Up Your Culture, with Tony Chatman</span>
+                        <li class="podcast-item" data-src="Audios/Light%20Up%20Your%20Culture.mp3" data-title="EEC 339: Light Up Your Culture, with Tony Chatman" data-meta="Energy & Workplace Culture">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">EEC 339: Light Up Your Culture, with Tony Chatman</span>
+                                <span class="podcast-meta">Energy & Workplace Culture</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Insights from a Professional Speaker</span>
+                        <li class="podcast-item" data-src="Audios/Tony-Chatman-Insights-from-a-Professional-Speaker.mp3" data-title="Insights from a Professional Speaker" data-meta="Stage Presence, Delivery & Impact">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Insights from a Professional Speaker</span>
+                                <span class="podcast-meta">Stage Presence, Delivery & Impact</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Cultivating Inclusive Workplaces for Thriving Teams</span>
+                        <li class="podcast-item" data-src="Audios/s2e11-cultivating-inclusive-workplaces-for-thriving-teams.mp3" data-title="Cultivating Inclusive Workplaces for Thriving Teams" data-meta="The Creating Belonging Podcast • S2E11">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Cultivating Inclusive Workplaces for Thriving Teams</span>
+                                <span class="podcast-meta">The Creating Belonging Podcast • S2E11</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Tony Chatman Turns Problems Into Progress</span>
-                            <i class="fa-solid fa-cloud"></i>
+                        <li class="podcast-item" data-src="Audios/Cultivating-Leadership-by-Uncovering-Our-Unconscious-Bias-Tony-Chatman.mp3" data-title="Cultivating Leadership by Uncovering Our Unconscious Bias" data-meta="ThriveMore with Roger Martin • E54">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Cultivating Leadership by Uncovering Our Unconscious Bias</span>
+                                <span class="podcast-meta">ThriveMore with Roger Martin • E54</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Tony Chatman talks "Bias"</span>
-                            <i class="fa-solid fa-cloud"></i>
+                        <li class="podcast-item" data-src="Audios/Why-Leaders-Should-Aim-to-be-Force-Multipliers-Lead-at-the-Top-of-Your-Game-Episode-41.mp3" data-title="Why Leaders Should Aim to be Force Multipliers" data-meta="Lead at the Top of Your Game • Episode 41">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Why Leaders Should Aim to be Force Multipliers</span>
+                                <span class="podcast-meta">Lead at the Top of Your Game • Episode 41</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Ignite Your Workplace Culture</span>
+                        <li class="podcast-item" data-src="Audios/Why-Your-Employees-Are-Not-Engaged.mp3" data-title="Why Your Employees Are Not Engaged" data-meta="Overcoming Disengagement & Driving Impact">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Why Your Employees Are Not Engaged</span>
+                                <span class="podcast-meta">Overcoming Disengagement & Driving Impact</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Cultivating Leadership by Uncovering Our Unconscious Bias</span>
+                        <li class="podcast-item" data-src="Audios/How-to-be-a-powerful-leader.mp3" data-title="How to Be a Powerful Leader" data-meta="Core Principles of Executive Influence">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">How to Be a Powerful Leader</span>
+                                <span class="podcast-meta">Core Principles of Executive Influence</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Why Leaders Should Aim to be Force Multipliers</span>
+                        <li class="podcast-item" data-src="Audios/A%20year%20of%20listening.mp3" data-title="A Year of Listening" data-meta="Deep Listening & Authentic Leadership">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">A Year of Listening</span>
+                                <span class="podcast-meta">Deep Listening & Authentic Leadership</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">Why Your Employees Are Not Engaged w/ Tony Chatman</span>
+                        <li class="podcast-item" data-src="Audios/Consulting%20Success%20Podcast.mp3" data-title="Consulting Success: The Truth on Unconscious Bias" data-meta="The RESPECT Podcast • Episode 32">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Consulting Success: The Truth on Unconscious Bias</span>
+                                <span class="podcast-meta">The RESPECT Podcast • Episode 32</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
-                        <li class="podcast-item">
-                            <i class="fa-solid fa-play"></i>
-                            <span class="podcast-title">How to be a powerful leader</span>
+                        <li class="podcast-item" data-src="Audios/Keep%20Leading.mp3" data-title="Keep Leading: Be a Force Multiplier" data-meta="Keep Leading Podcast • KL007">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Keep Leading: Be a Force Multiplier</span>
+                                <span class="podcast-meta">Keep Leading Podcast • KL007</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/NSA%20NYC%20EXCELLENCE.mp3" data-title="NSA NYC: How to Improve Your Human Relationships" data-meta="Training Unleashed • Episode 62">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">NSA NYC: How to Improve Your Human Relationships</span>
+                                <span class="podcast-meta">Training Unleashed • Episode 62</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/Sales%20Fuel.mp3" data-title="Manage Smarter: Winners, Losers & The Force Multiplier" data-meta="Manage Smarter Podcast • Episode 45">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Manage Smarter: Winners, Losers & The Force Multiplier</span>
+                                <span class="podcast-meta">Manage Smarter Podcast • Episode 45</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/Take%20The%20Lead.mp3" data-title="Take the Lead: The Truth About Unconscious Bias" data-meta="Take the Lead Radio with Dr. Diane Hamilton">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Take the Lead: The Truth About Unconscious Bias</span>
+                                <span class="podcast-meta">Take the Lead Radio with Dr. Diane Hamilton</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/The-intentional-leader-podcast.mp3" data-title="The Intentional Leader: Episode 22" data-meta="Intentional Leadership with Sean Olson">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">The Intentional Leader: Episode 22</span>
+                                <span class="podcast-meta">Intentional Leadership with Sean Olson</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/ThriveLoud.mp3" data-title="Thrive LOUD with Tony Chatman" data-meta="Thrive LOUD with Lou Diamond">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Thrive LOUD with Tony Chatman</span>
+                                <span class="podcast-meta">Thrive LOUD with Lou Diamond</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
+                        </li>
+                        <li class="podcast-item" data-src="Audios/Training%20Unleashed.mp3" data-title="Training Unleashed: Diversity & Inclusion" data-meta="Mere Mortals Unite • Episode 177">
+                            <div class="play-btn-circle"><i class="fa-solid fa-play item-play-icon"></i></div>
+                            <div class="podcast-title-wrap">
+                                <span class="podcast-title">Training Unleashed: Diversity & Inclusion</span>
+                                <span class="podcast-meta">Mere Mortals Unite • Episode 177</span>
+                            </div>
+                            <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+                            <i class="fa-solid fa-cloud podcast-cloud-icon" style="color: #c7c7cc; font-size: 13px;"></i>
                         </li>
                     </ul>
                     
-                    <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid #e5e5ea; display: flex; align-items: center; justify-content: space-between;">
-                        <div>
-                            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-color-secondary); margin-bottom: 6px; font-weight: 600;">Now Playing</div>
-                            <div style="font-weight: 600; font-size: 15px; color: var(--text-color);">TMG "SNAP JUDGEMENTS"</div>
-                            <div style="font-size: 13px; color: var(--text-color-secondary); margin-top: 4px; font-variant-numeric: tabular-nums;">0:00 / 1:05:00</div>
+                    <!-- Player Deck -->
+                    <div class="podcast-player-deck">
+                        <!-- Scrubber Track and Time Labels -->
+                        <div class="scrubber-container" id="scrubberContainer" aria-label="Audio progress scrubber">
+                            <div class="scrubber-track">
+                                <div class="scrubber-progress" id="scrubberProgress">
+                                    <div class="scrubber-thumb"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 24px;">
-                            <i class="fa-solid fa-backward-step" style="color: var(--text-color); font-size: 16px; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
-                            <button style="width: 50px; height: 50px; border-radius: 50%; background: var(--accent-terracotta); color: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-play" style="margin-left: 3px;"></i></button>
-                            <i class="fa-solid fa-forward-step" style="color: var(--text-color); font-size: 16px; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                        <div class="podcast-time-row">
+                            <span id="playerCurrentTime">0:00</span>
+                            <span id="playerDuration">--:--</span>
+                        </div>
+
+                        <!-- Player Controls & Now Playing Info -->
+                        <div class="podcast-player-footer">
+                            <div class="podcast-now-playing">
+                                <div class="podcast-now-playing-label">
+                                    <span>Now Playing</span>
+                                    <span id="playerStatusDot"></span>
+                                </div>
+                                <div id="playerTitle" title='TMG "SNAP JUDGEMENTS"'>TMG "SNAP JUDGEMENTS"</div>
+                                <div id="playerMeta">Tony Chatman on Bias & Quick Decisions</div>
+                            </div>
+
+                            <div class="podcast-controls">
+                                <button class="player-control-btn" id="playerPrevBtn" title="Previous Episode" aria-label="Previous Episode">
+                                    <i class="fa-solid fa-backward-step"></i>
+                                </button>
+                                <button class="player-control-btn" id="playerRewindBtn" title="Rewind 15 seconds" aria-label="Rewind 15 seconds">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                </button>
+                                <button class="player-play-btn" id="playerPlayBtn" title="Play / Pause" aria-label="Play or Pause">
+                                    <i class="fa-solid fa-play" id="playerPlayIcon"></i>
+                                </button>
+                                <button class="player-control-btn" id="playerForwardBtn" title="Forward 15 seconds" aria-label="Forward 15 seconds">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                </button>
+                                <button class="player-control-btn" id="playerNextBtn" title="Next Episode" aria-label="Next Episode">
+                                    <i class="fa-solid fa-forward-step"></i>
+                                </button>
+                                <button class="player-control-btn" id="playerMuteBtn" title="Mute / Unmute" aria-label="Mute / Unmute">
+                                    <i class="fa-solid fa-volume-high" id="playerMuteIcon"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    <!-- Hidden Audio Element -->
+                    <audio id="podcastAudio" preload="metadata" src="Audios/TMG-22SNAP-JUDGEMENTS22.mp3"></audio>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        // Tony Chatman Podcast Player Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('podcastAudio');
+            const playBtn = document.getElementById('playerPlayBtn');
+            const playIcon = document.getElementById('playerPlayIcon');
+            const prevBtn = document.getElementById('playerPrevBtn');
+            const nextBtn = document.getElementById('playerNextBtn');
+            const rewindBtn = document.getElementById('playerRewindBtn');
+            const forwardBtn = document.getElementById('playerForwardBtn');
+            const muteBtn = document.getElementById('playerMuteBtn');
+            const muteIcon = document.getElementById('playerMuteIcon');
+            const scrubberContainer = document.getElementById('scrubberContainer');
+            const scrubberProgress = document.getElementById('scrubberProgress');
+            const currentTimeEl = document.getElementById('playerCurrentTime');
+            const durationEl = document.getElementById('playerDuration');
+            const playerTitleEl = document.getElementById('playerTitle');
+            const playerMetaEl = document.getElementById('playerMeta');
+            const playerStatusDot = document.getElementById('playerStatusDot');
+            const podcastItems = Array.from(document.querySelectorAll('.podcast-item'));
+
+            if (!audio || podcastItems.length === 0) return;
+
+            let currentIndex = 0;
+            let isDragging = false;
+
+            function formatTime(seconds) {
+                if (isNaN(seconds) || seconds < 0) return '0:00';
+                const hrs = Math.floor(seconds / 3600);
+                const mins = Math.floor((seconds % 3600) / 60);
+                const secs = Math.floor(seconds % 60);
+                const formattedSecs = secs < 10 ? '0' + secs : secs;
+                if (hrs > 0) {
+                    const formattedMins = mins < 10 ? '0' + mins : mins;
+                    return hrs + ':' + formattedMins + ':' + formattedSecs;
+                }
+                return mins + ':' + formattedSecs;
+            }
+
+            function setPlayingState(playing) {
+                const activeItem = podcastItems[currentIndex];
+                const activeIcon = activeItem ? activeItem.querySelector('.item-play-icon') : null;
+
+                if (playing) {
+                    playIcon.className = 'fa-solid fa-pause';
+                    playIcon.style.marginLeft = '0px';
+                    if (activeIcon) activeIcon.className = 'fa-solid fa-pause item-play-icon';
+                    if (activeItem) activeItem.classList.add('is-playing');
+                    if (playerStatusDot) {
+                        playerStatusDot.style.background = 'var(--accent-terracotta)';
+                        playerStatusDot.style.boxShadow = '0 0 8px rgba(184, 79, 41, 0.6)';
+                    }
+                } else {
+                    playIcon.className = 'fa-solid fa-play';
+                    playIcon.style.marginLeft = '2px';
+                    if (activeIcon) activeIcon.className = 'fa-solid fa-play item-play-icon';
+                    if (activeItem) activeItem.classList.remove('is-playing');
+                    if (playerStatusDot) {
+                        playerStatusDot.style.background = '#86868b';
+                        playerStatusDot.style.boxShadow = 'none';
+                    }
+                }
+            }
+
+            function loadTrack(index, autoPlay = true) {
+                if (index < 0) index = podcastItems.length - 1;
+                if (index >= podcastItems.length) index = 0;
+                currentIndex = index;
+
+                podcastItems.forEach((item, i) => {
+                    const itemPlayIcon = item.querySelector('.item-play-icon');
+                    if (i === currentIndex) {
+                        item.classList.add('active');
+                        if (itemPlayIcon) {
+                            itemPlayIcon.className = autoPlay ? 'fa-solid fa-pause item-play-icon' : 'fa-solid fa-play item-play-icon';
+                        }
+                        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        item.classList.remove('active', 'is-playing');
+                        if (itemPlayIcon) {
+                            itemPlayIcon.className = 'fa-solid fa-play item-play-icon';
+                        }
+                    }
+                });
+
+                const activeItem = podcastItems[currentIndex];
+                const src = activeItem.getAttribute('data-src');
+                const title = activeItem.getAttribute('data-title');
+                const meta = activeItem.getAttribute('data-meta') || '';
+
+                if (playerTitleEl) {
+                    playerTitleEl.textContent = title;
+                    playerTitleEl.title = title;
+                }
+                if (playerMetaEl) playerMetaEl.textContent = meta;
+
+                scrubberProgress.style.width = '0%';
+                currentTimeEl.textContent = '0:00';
+                durationEl.textContent = '--:--';
+
+                audio.src = src;
+
+                if (autoPlay) {
+                    audio.play().then(() => {
+                        setPlayingState(true);
+                    }).catch(function(err) {
+                        console.warn('Autoplay prevented:', err);
+                        setPlayingState(false);
+                    });
+                } else {
+                    setPlayingState(false);
+                }
+            }
+
+            function togglePlay() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        setPlayingState(true);
+                    }).catch(function(err) {
+                        console.warn('Playback error:', err);
+                    });
+                } else {
+                    audio.pause();
+                    setPlayingState(false);
+                }
+            }
+
+            // Controls listeners
+            if (playBtn) playBtn.addEventListener('click', togglePlay);
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    if (audio.currentTime > 3) {
+                        audio.currentTime = 0;
+                    } else {
+                        loadTrack(currentIndex - 1, true);
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    loadTrack(currentIndex + 1, true);
+                });
+            }
+
+            if (rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 15);
+                });
+            }
+
+            if (forwardBtn) {
+                forwardBtn.addEventListener('click', function() {
+                    if (audio.duration) {
+                        audio.currentTime = Math.min(audio.duration, audio.currentTime + 15);
+                    }
+                });
+            }
+
+            if (muteBtn) {
+                muteBtn.addEventListener('click', function() {
+                    audio.muted = !audio.muted;
+                    if (audio.muted) {
+                        muteIcon.className = 'fa-solid fa-volume-xmark';
+                        muteBtn.style.color = 'var(--accent-terracotta)';
+                    } else {
+                        muteIcon.className = 'fa-solid fa-volume-high';
+                        muteBtn.style.color = '';
+                    }
+                });
+            }
+
+            // Scrubber seeking
+            function seek(e) {
+                if (!audio.duration) return;
+                const rect = scrubberContainer.getBoundingClientRect();
+                const clickX = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+                const pct = clickX / rect.width;
+                audio.currentTime = pct * audio.duration;
+                scrubberProgress.style.width = (pct * 100) + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            }
+
+            if (scrubberContainer) {
+                scrubberContainer.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    seek(e);
+                });
+
+                window.addEventListener('mousemove', function(e) {
+                    if (isDragging) seek(e);
+                });
+
+                window.addEventListener('mouseup', function() {
+                    if (isDragging) isDragging = false;
+                });
+
+                scrubberContainer.addEventListener('touchstart', function(e) {
+                    isDragging = true;
+                    if (e.touches && e.touches[0]) seek(e.touches[0]);
+                }, { passive: true });
+
+                window.addEventListener('touchmove', function(e) {
+                    if (isDragging && e.touches && e.touches[0]) seek(e.touches[0]);
+                }, { passive: true });
+
+                window.addEventListener('touchend', function() {
+                    if (isDragging) isDragging = false;
+                });
+            }
+
+            // Audio element events
+            audio.addEventListener('timeupdate', function() {
+                if (!isDragging && audio.duration) {
+                    const pct = (audio.currentTime / audio.duration) * 100;
+                    scrubberProgress.style.width = pct + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            });
+
+            audio.addEventListener('loadedmetadata', function() {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+
+            audio.addEventListener('ended', function() {
+                loadTrack(currentIndex + 1, true);
+            });
+
+            audio.addEventListener('play', function() {
+                setPlayingState(true);
+            });
+
+            audio.addEventListener('pause', function() {
+                setPlayingState(false);
+            });
+
+            // Podcast item click listeners
+            podcastItems.forEach((item, idx) => {
+                item.addEventListener('click', function() {
+                    if (idx === currentIndex) {
+                        togglePlay();
+                    } else {
+                        loadTrack(idx, true);
+                    }
+                });
+            });
+        });
+    </script>
 
         <!-- III. Articles Section -->
     <section class="services-section section-padding" style="background-color: var(--bg-white);">
@@ -366,63 +1355,113 @@
                 }
             </style>
             <div id="blog-carousel" style="display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth;">
-                <!-- Article 1 -->
+                <!-- Article 1 (External - CEO Weekly) -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">I Spent 15 Years Studying Why Change Fails Here's What I Found</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">Are you where you hoped to be at this point in your life? If not, why? That's the question I ask audiences...</p>
-                        <a href="https://tonychatman.com/i-spent-15-years-studying-why-change-fails-heres-what-i-found/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:720/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2023/11/pexels-tiger-lily-7109242-1-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">CEO Weekly · Feature</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Resistance Expert Tony Chatman Is Naming the Problem Holding Teams Back</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">Why resistance is the silent force sabotaging high-performing teams, and how leaders can uncover and redirect it into productive momentum.</p>
+                        <a href="https://ceoweekly.com/resistance-expert-tony-chatman-is-naming-the-problem-holding-teams-back/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read on CEO Weekly <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i></a>
                     </div>
                 </div>
-                
-                <!-- Article 2 -->
+
+                <!-- Article 2 (External - Digital Journal) -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">You're Not Hiring Bad People, You're Making Bad People</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">I've heard the conversation a hundred times. I can't tell you how it starts, but at somepoint, a manager...</p>
-                        <a href="https://tonychatman.com/youre-not-hiring-bad-people-youre-making-bad-people/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1920/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Workplace-violence-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Digital Journal · Editorial</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Why Latin America’s AI moment demands a different kind of expert: Tony Chatman</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">As AI transformation sweeps global enterprises, technology alone won't secure adoption without understanding human organizational psychology.</p>
+                        <a href="https://www.digitaljournal.com/article/why-latin-americas-ai-moment-demands-a-different-kind-of-expert-tony-chatman/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read on Digital Journal <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i></a>
                     </div>
                 </div>
 
                 <!-- Article 3 -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1529156069898-49953eb1f5f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">When It Comes To Bad Managers, I Say Blame The Parents</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">We've all seen it, whether at a mall, a playground, our kid's school or even whilevisiting family, we've...</p>
-                        <a href="https://tonychatman.com/when-it-comes-to-bad-managers-i-say-blame-the-parents/" target="_blank" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1920/h:1079/q:mauto/https://tonychatman.com/wp-content/uploads/2025/12/getty-images-BBhb0fmxspQ-unsplash-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Change Leadership</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">I Spent 15 Years Studying Why Change Fails. Here’s What I Found.</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">Are you where you hoped to be at this point in your life? If not, why? The answers always reveal the gap between intention and action.</p>
+                        <a href="i-spent-15-years-studying-why-change-fails-heres-what-i-found.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
                     </div>
                 </div>
                 
-                <!-- Article 4 (Dummy) -->
+                <!-- Article 4 -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">The Anatomy of a High-Performing Team</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">Building a team that performs under pressure doesn't happen by accident. Here are the 5 pillars of team success...</p>
-                        <a href="#" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1619/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Hiring-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Talent & Culture</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">You’re Not Hiring Bad People, You’re Making Bad People</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">I've heard the conversation a hundred times. Managers complain about new hires, but the breakdown usually happens inside onboarding.</p>
+                        <a href="youre-not-hiring-bad-people-youre-making-bad-people.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="service-card blog-card-carousel">
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1350/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Blame-the-parents-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Management</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">When It Comes To Bad Managers, I Say Blame The Parents</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">We've all seen poor managerial habits play out in boardrooms. Why foundational behaviors mirror early developmental cues.</p>
+                        <a href="when-it-comes-to-bad-managers-i-say-blame-the-parents.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
                     </div>
                 </div>
                 
-                <!-- Article 5 (Dummy) -->
+                <!-- Article 6 -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Navigating Corporate Change Without Losing Your Mind</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">Change is inevitable, but burnout isn't. Discover how top executives guide their organizations through transitions.</p>
-                        <a href="#" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1920/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Workplace-violence-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Organizational Safety</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Workplace Violence – Surprised This Happens Or Surprised It Doesn’t Happen More?</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">When workplace tragedies make headlines, how can organizations identify toxic friction before it boils over into catastrophic conflict?</p>
+                        <a href="workplace-violence-surprised-this-happens-or-surprised-it-doesnt-happen-more.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
                     </div>
                 </div>
                 
-                <!-- Article 6 (Dummy) -->
+                <!-- Article 7 -->
                 <div class="service-card blog-card-carousel">
-                    <div style="height: 220px; width: 100%; background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
-                    <div style="padding: 35px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
-                        <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Why Empathy is Your Greatest Leadership Asset</h3>
-                        <p style="font-size: 15px; color: var(--text-color-secondary); margin-bottom: 25px; line-height: 1.5; flex-grow: 1;">The best leaders aren't just strategists; they're empathetic listeners. Learn how to cultivate empathy in leadership.</p>
-                        <a href="#" class="btn btn-outline" style="align-self: flex-start; font-size: 14px; padding: 8px 18px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read More</a>
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1920/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Debate-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Leadership Dynamics</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">In The Leaders Vs. Managers Debate, Managers Are Getting A Raw Deal</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">You can't go 20 minutes without seeing an article contrasting leaders and managers. But without great managers, visions remain pipe dreams.</p>
+                        <a href="in-the-leaders-vs-managers-debate-managers-are-getting-a-raw-deal.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 8 -->
+                <div class="service-card blog-card-carousel">
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1619/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Good-followers-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Team Dynamics</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">The Need For Good Followers</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">Everyone wants to be a leader. But every great leader knows that an organization's ultimate superpower is empowered, proactive followers.</p>
+                        <a href="the-need-for-good-followers.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
+                    </div>
+                </div>
+
+                <!-- Article 9 -->
+                <div class="service-card blog-card-carousel">
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1618/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/expendable-leader-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Executive Advisory</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">Are You An Expendable Leader?</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">What separates indispensable leaders from those who are easily replaced when economic tides turn? Lessons on value creation.</p>
+                        <a href="are-you-an-expendable-leader.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
+                    </div>
+                </div>
+
+                <!-- Article 10 -->
+                <div class="service-card blog-card-carousel">
+                    <div style="height: 220px; width: 100%; background-image: url('https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1619/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/solution-to-leadership-problems-scaled.jpg'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0;"></div>
+                    <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1; color: var(--text-color);">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF6B00; font-weight: 700; margin-bottom: 8px;">Leadership Strategy</span>
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">A Simple Solution to Our Most Pressing Leadership Issue</h3>
+                        <p style="font-size: 14.5px; color: var(--text-color-secondary); margin-bottom: 22px; line-height: 1.55; flex-grow: 1;">Leadership has risen to become one of the most pressing talent challenges facing organizations worldwide. The straightforward solution.</p>
+                        <a href="a-simple-solution-to-our-most-pressing-leadership-issue.html" class="btn btn-outline" style="align-self: flex-start; font-size: 13px; padding: 8px 16px; border: 1px solid var(--accent-terracotta); color: var(--accent-terracotta); transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--accent-terracotta)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--accent-terracotta)';">Read Article</a>
                     </div>
                 </div>
             </div>
@@ -563,6 +1602,43 @@
                 if(mainHeader) mainHeader.classList.remove('scrolled');
             }
         });
+
+        // Mobile Menu Drawer Logic
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavIcon = document.getElementById('mobileNavIcon');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenuOverlay.classList.toggle('is-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileNavIcon.classList.remove('fa-bars');
+                mobileNavIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNavIcon.classList.remove('fa-xmark');
+                mobileNavIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (mobileNavToggle && mobileMenuOverlay) {
+            mobileNavToggle.addEventListener('click', toggleMobileMenu);
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenuOverlay.classList.contains('is-open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('is-open')) {
+                    toggleMobileMenu();
+                }
+            });
+        }
     </script>
 </body>
 

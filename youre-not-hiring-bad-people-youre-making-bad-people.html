@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>You’re Not Hiring Bad People, You’re Making Bad People | Tony Chatman</title>
+    
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
+    <link href="apple.css" rel="stylesheet"/>
+    
+    <style>
+        /* Immediate Visibility */
+        .article-hero-container,
+        .article-featured-image-box,
+        .article-content-flow,
+        .author-bio-card {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .top-utility-bar {
+            display: none;
+        }
+        @media (min-width: 992px) {
+            .top-utility-bar {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10000;
+                background-color: #0A0F1D;
+                color: #e5e5ea;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 40px;
+                height: 45px;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+                transition: transform 0.3s ease;
+            }
+            .top-utility-bar.scrolled {
+                transform: translateY(-100%);
+            }
+            .top-utility-bar a {
+                color: #e5e5ea;
+                text-decoration: none;
+                transition: color 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .top-utility-bar a:hover {
+                color: #FF6B00;
+            }
+            .top-utility-bar .util-left, .top-utility-bar .util-right {
+                display: flex;
+                align-items: center;
+                gap: 28px;
+            }
+            .top-utility-bar .util-right .social-icons {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+            .top-utility-bar .social-icons i {
+                font-size: 16px;
+            }
+            
+            .main-header {
+                top: 65px !important;
+                left: 50% !important;
+                transform: translateX(-50%);
+                width: 92% !important;
+                max-width: 1200px;
+                border-radius: 980px;
+                height: 64px !important;
+                padding: 0 35px !important;
+                background: rgba(10, 15, 29, 0.45) !important;
+                backdrop-filter: blur(16px) !important;
+                -webkit-backdrop-filter: blur(16px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                transition: top 0.3s ease, background 0.3s ease !important;
+            }
+            .main-header.scrolled {
+                top: 20px !important;
+                background: rgba(10, 15, 29, 0.75) !important;
+            }
+            .main-header .logo img {
+                height: 28px !important;
+            }
+            .main-header ul {
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 30px !important;
+            }
+            .main-header ul li {
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .top-utility-bar {
+                height: 45px !important;
+                padding: 0 40px !important;
+                box-sizing: border-box !important;
+            }
+        }
+
+        /* Article Hero Header */
+        .article-hero {
+            padding-top: 155px;
+            padding-bottom: 50px;
+            background: linear-gradient(180deg, #0A0F1D 0%, #12192B 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        @media (max-width: 991px) {
+            .article-hero {
+                padding-top: 110px;
+                padding-bottom: 40px;
+            }
+        }
+
+        .article-hero-container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .article-breadcrumbs {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .article-breadcrumbs a {
+            color: #a1a1a6;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .article-breadcrumbs a:hover {
+            color: #FF6B00;
+        }
+        .article-breadcrumbs span.separator {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .article-breadcrumbs span.current {
+            color: #FF6B00;
+        }
+
+        .article-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 28px;
+            }
+        }
+
+        .article-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: #d2d2d7;
+            font-size: 14px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-meta-badge {
+            background: rgba(255, 107, 0, 0.18);
+            color: #FF6B00;
+            border: 1px solid rgba(255, 107, 0, 0.35);
+            padding: 5px 14px;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Article Main Body Container */
+        .article-body-wrapper {
+            background-color: #ffffff;
+            color: #1d1d1f;
+            padding: 40px 0 90px;
+        }
+
+        .article-container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Featured Image - Clean positive spacing, no negative margins to avoid overlapping */
+        .article-featured-image-box {
+            margin-top: 0;
+            margin-bottom: 45px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            background-color: #f5f5f7;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .article-featured-image-box img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Typography */
+        .article-paragraph {
+            font-size: 18.5px;
+            line-height: 1.8;
+            color: #2c2c2e;
+            margin-bottom: 26px;
+            font-weight: 400;
+        }
+        .article-paragraph strong {
+            color: #111;
+            font-weight: 600;
+        }
+        .article-paragraph a {
+            color: var(--accent-terracotta);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .article-paragraph a:hover {
+            color: #FF6B00;
+        }
+
+        .article-subheading {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+        h3.article-subheading {
+            font-size: 22px;
+        }
+
+        .article-quote {
+            position: relative;
+            background: #fbfbfd;
+            border-left: 4px solid #FF6B00;
+            padding: 26px 32px;
+            margin: 38px 0;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+        .article-quote .quote-icon {
+            color: rgba(255, 107, 0, 0.4);
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .article-quote p {
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #1d1d1f;
+            margin: 0;
+            font-weight: 450;
+        }
+
+        .article-list {
+            padding-left: 24px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            line-height: 1.75;
+            color: #2c2c2e;
+        }
+        .article-list li {
+            margin-bottom: 12px;
+        }
+
+        .article-divider {
+            border: none;
+            height: 1px;
+            background-color: #e5e5ea;
+            margin: 40px 0;
+        }
+
+        /* Author Profile Box */
+        .author-bio-card {
+            margin-top: 50px;
+            padding: 32px;
+            background: #f8f8fa;
+            border-radius: 20px;
+            border: 1px solid #ededf0;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+        }
+        @media (max-width: 650px) {
+            .author-bio-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+            }
+        }
+        .author-bio-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #FF6B00;
+            flex-shrink: 0;
+        }
+        .author-bio-details h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 4px;
+        }
+        .author-bio-details .author-role {
+            font-size: 13px;
+            color: #FF6B00;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+        .author-bio-details p {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+        .author-bio-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Navigation between articles */
+        .article-pagination-bar {
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5ea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .back-to-resources-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 980px;
+            border: 1px solid #d2d2d7;
+            background: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .back-to-resources-btn:hover {
+            background: var(--accent-terracotta);
+            color: #ffffff;
+            border-color: var(--accent-terracotta);
+            transform: translateY(-2px);
+        }
+        .next-article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .next-article-link:hover {
+            color: #FF6B00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Utility Bar -->
+    <div class="top-utility-bar">
+        <div class="util-left">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+        </div>
+        <div class="util-right">
+            <span>Meeting Professionals</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="mainHeader">
+        <nav class="header-left" style="flex: 1; display: flex; justify-content: flex-end; padding-right: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="/speaking">SPEAKING</a></li>
+                <li><a href="/training">TRAINING</a></li>
+                <li><a href="/executiveadvisory">EXECUTIVE ADVISORY</a></li>
+            </ul>
+        </nav>
+        <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
+                <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
+            </a>
+        </div>
+        <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
+            <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="resources.html" style="color: #FF6B00;">RESOURCES</a></li>
+                <li><a href="/meet-tony">MEETING PLANNERS</a></li>
+                <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
+            </ul>
+        </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="resources.html" style="color: #FF6B00;">Resources</a></li>
+            <li><a href="/meet-tony">Meeting Planners</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Hero Header -->
+    <section class="article-hero">
+        <div class="article-hero-container">
+            <div class="article-breadcrumbs">
+                <a href="resources.html">Resources</a>
+                <span class="separator">/</span>
+                <a href="resources.html#blog-carousel">Perspectives</a>
+                <span class="separator">/</span>
+                <span class="current">Article</span>
+            </div>
+            <h1 class="article-title">You’re Not Hiring Bad People, You’re Making Bad People</h1>
+            <div class="article-meta-row">
+                <span class="article-meta-badge">Talent & Culture</span>
+                <span class="article-meta-item"><i class="fa-solid fa-user-tie" style="color: #FF6B00;"></i> Tony Chatman</span>
+                <span class="article-meta-item"><i class="fa-solid fa-clock" style="color: #a1a1a6;"></i> 8 min read</span>
+                <span class="article-meta-item"><i class="fa-solid fa-layer-group" style="color: #a1a1a6;"></i> Culture & Performance</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="article-body-wrapper">
+        <div class="article-container">
+            
+            <!-- Featured Image (clean positive spacing, no overlap) -->
+            <div class="article-featured-image-box">
+                <img src="https://mlnicepohafb.i.optimole.com/cb:a_M_.9f5b/w:1619/h:1080/q:mauto/https://tonychatman.com/wp-content/uploads/2024/03/Hiring-scaled.jpg" alt="You’re Not Hiring Bad People, You’re Making Bad People" loading="eager" />
+            </div>
+
+            <!-- Content Elements -->
+            <div class="article-content-flow">
+<p class="article-paragraph">I’ve heard the conversation a hundred times. I can’t tell you how it starts, but at some point, a manager says, “We need to figure out a way to hire better people. It’s hard to find good people who work harder and show more initiative. If we just hire the right people we can increase our engagement.” They’ll often throw in, “This generation just doesn’t like to work.” It’s as though there is something wrong in the hiring process and if they can fix it, all of their employee engagement problems will go away.</p>
+<p class="article-paragraph">There is a real problem out there. Recently Gallup determined that in 2014, 31.5% of employees were engaged (up from 29.6% in 2013). That sounds like good news. Engagement is increasing, but let’s not miss the reality: if 31.5% of employees ARE engaged, then 68.5% of employees are not engaged. Pause for a second and let that sink in, over 2/3 of American employees are not engaged. The only thing more alarming than that is that for most it’s not alarming.</p>
+<p class="article-paragraph">We’ve come to accept low engagement the norm. We would never accept this in other areas. If you took your car to the mechanic and he (or she), said, “the problem with your car is that only 31.5% of your engine is working at full capacity”, we wouldn’t say, “Oh well that doesn’t sound too bad. How long can I drive it before it becomes a problem?” If we went to the doctor for a checkup and she (or he) said, “Everything’s fine except it seems your heart is only functioning at 31.5%, we wouldn’t say, “Glad it’s nothing serious.” We’ve come to accept and even expect mediocrity in the workplace. Engagement is a serious issue that needs to be addressed. But is the problem really in the hiring process?</p>
+<p class="article-paragraph">Don’t get me wrong; it is possible to hire the wrong people. We’ve all made that mistake. Either they’re not a good fit for the organization, they have their own agenda, they look good on paper but in reality are nothing like their resumes or a variety of other mistakes, but I’m also concerned about the good people we hire who over time disengage. It’s hard for me to imagine that companies are wrong about who they hire 68% of the time. There is something else going on, something that’s happening after the hiring process.</p>
+<p class="article-paragraph">People often speak about employee engagement as though it is some strange abstract concept that requires some hidden, esoteric knowledge to understand. Employees are described as being engaged, fully engaged, disengaged, partly engaged, etc. Then, many of the solutions begin with things like aligning people to the organization’s mission and so on and so forth. By the time we’re all done, trying to find a real, working solution to all of this engagement stuff is like trying to locate the Yeti or the Loch Ness Monster.</p>
+<p class="article-paragraph">All of this engagement analysis is way too complicated. Let’s make this really simple. Employee engagement is a measure of how much someone cares about his or her job. I don’t mean care if they have a job, but actually care about how they do at their job. It’s really that simple. That’s why the phrase “emotional commitment” is so often used in describing engagement; it’s a measure of how much someone is emotionally attached to his or her job. Everything else: enthusiasm, ownership, time at work, going the extra- mile, even performance are simply symptoms or indicators of whether engagement exists. They are signs of life. But at the core, the real issue is how much does this person really care about their job?</p>
+<p class="article-paragraph">For some, the entirety of that answer is internal. There are people out there who work hard regardless of what’s going on around them. They take ownership for their work even when surrounded by those who don’t. Whether it’s due to a sense of responsibility, or their own sense of character and ethics, they will come to work and engage themselves regardless of the circumstances around them and irrespective of how they are treated. But those employees often perform in spite of, not because of their manager and their work environment. For the rest of employees, the vast majority, the work environment has a significant affect on their engagement. And in all honesty, in many cases, the work environment is sucking the life out of many of the good employees.</p>
+<p class="article-paragraph">So how do we fix this? Organizations must be aware of what’s going on at the manager level. It’s widely accepted that an employee’s relationship with his or her manager is the leading factor influencing employee engagement. So if you really want to improve employee engagement, addressing what’s going on at the management level will give you the biggest bang for your buck. Jim Clifton, CEO of Gallup is quoted as saying “Here’s something they’ll probably never teach you in business school: The single biggest decision you make in your job – bigger than all of the rest – is who you name manager. When you name the wrong person manager, nothing fixes that bad decision. Not compensation, not benefits – nothing.”</p>
+<p class="article-paragraph">It’s common to give tips or strategies that managers can incorporate to help increase engagement. The problem with that approach is it assumes there aren’t things that managers need to stop doing. It’s like going to the doctor to lose weight and having her put you on an exercise program without saying that you need to stop eating Twinkies. So here are few common things supervisors, managers, directors and executives who suck the engagement out of their employees need to stop doing and this list is by no means exhaustive:</p>
+<ul class="article-list"><li>Micromanaging competent people</li><li>Throwing temper tantrums</li><li>Talking down to others</li><li>Stealing credit for others work</li><li>Having an answer for everything</li><li>Addressing issues through meetings</li><li>Not giving specific direction and then being unhappy with the results</li><li>Giving responsibility without authority</li><li>Playing favorites</li><li>Keeping people in the doghouse</li><li>Withholding information</li></ul>
+<p class="article-paragraph">Have you ever heard the phrase, “It’s not me, it’s you?” If you are doing any of these things, your employees are not the reason for low engagement, you are.</p>
+<p class="article-paragraph">If you are running an organization or (and maybe more importantly) if you’re running a startup or a small business, here are a few questions you should ask in regards to your management team:</p>
+<p class="article-paragraph">First are you selecting the right people? Unfortunately, many managers are selected because they were high performers at their previous job, not because they show high potential as a leader. Choosing leaders who are resilient and don’t take things personally along with having good interpersonal skills, the ability to communicate, a willingness to learn and a high level of integrity (among other things) is a must.</p>
+<p class="article-paragraph">Also, are your managers receiving training and other opportunities for development? There really is both an art and a science to leadership and it is a combination of nature and nurture. Training, along with coaching mentors and development opportunities is a must.</p>
+<p class="article-paragraph">And here is a great question, how engaged are those who are already managers? What is most eye opening about Gallup’s report is that among job categories, managers, executives and officers had the highest levels of engagement in 2014 at 38.4%. That means more than 60% of those in leadership positions are not engaged. These are the people who are coaching, training and mentoring other managers. These are the one’s creating your “culture.” If there not engaged than how can you expect the student to surpass the teacher?</p>
+<p class="article-paragraph">Of course, there are other questions that need to be asked as well: How is the overall work environment? Does the company really value its employees? Are people’s daily responsibilities aligned with their skillset? Do people really know how to perform their work? An yes, who are you hiring?</p>
+<p class="article-paragraph">All of this seems like a lot but it really isn’t and it’s not that complicated to figure out. You can either decide to create a culture that fosters engagement, and then hire good people to foster that culture, or you can ignore the problem and let your culture contaminate the good people you hire.</p>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="author-bio-card">
+                <img src="Photos/D87A3378.edited.jpg" alt="Tony Chatman" class="author-bio-avatar" />
+                <div class="author-bio-details">
+                    <h4>Tony Chatman</h4>
+                    <div class="author-role">Keynote Speaker · Chemical Engineer · Leadership Advisor</div>
+                    <p>Tony connects deep scientific curiosity with real-world organizational dynamics to help leaders, teams, and enterprises master change, dismantle resistance, and achieve peak performance.</p>
+                    <div class="author-bio-links">
+                        <a href="/contact" class="btn btn-orange" style="padding: 7px 18px; font-size: 13px;">Book Tony</a>
+                        <a href="/speaking" class="btn btn-outline" style="padding: 7px 18px; font-size: 13px; border-color: #d2d2d7; color: #1d1d1f;">Speaking Topics</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Pagination / Back -->
+            <div class="article-pagination-bar">
+                <a href="resources.html#blog-carousel" class="back-to-resources-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Resources & Perspectives
+                </a>
+                <a href="when-it-comes-to-bad-managers-i-say-blame-the-parents.html" class="next-article-link">
+                    Next: When It Comes To Bad Managers, I Sa... <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Newsletter CTA Section -->
+    <section class="section-padding" style="background-color: #000000; color: #ffffff;">
+        <div class="container text-center" style="text-align: center; max-width: 600px; margin: 0 auto; padding: 0 20px;">
+            <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; margin-bottom: 15px;">Stay Connected</h3>
+            <h2 class="section-title" style="font-size: 42px; margin-bottom: 15px; color: #ffffff;">Get New Insights When They Drop</h2>
+            <div class="divider-terracotta"></div>
+            <p class="section-subtitle" style="margin-bottom: 35px; font-size: 17px; color: #d2d2d7;">Join the list and get Tony's latest thinking on resistance, change, and leadership delivered directly to your inbox.</p>
+            
+            <form style="display: flex; gap: 10px; justify-content: center; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+                <input type="email" placeholder="Your email address" required style="flex-grow: 1; padding: 14px 20px; border-radius: 980px; border: 1px solid #d2d2d7; font-size: 16px; font-family: var(--apple-font); outline: none; background: #fff; min-width: 240px; color: var(--text-color);">
+                <button type="submit" class="btn" style="white-space: nowrap; padding: 14px 28px;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <a href="/" style="font-size: 21px; font-weight: 600; color: #1d1d1f; display: block; margin-bottom: 15px;">TC.</a>
+                <p>Tony Chatman has the rare gift of immediately connecting with his audience, regardless of age, race, gender or socio-economic background.</p>
+                <div style="margin-top: 20px; font-size: 16px;">
+                    <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" style="margin-right: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/speaking">Speaking</a></li>
+                    <li><a href="/training">Training</a></li>
+                    <li><a href="/executiveadvisory">Executive Advisory</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:6304005365"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> 630-400-5365</a></li>
+                    <li><a href="mailto:info@tonychatman.com"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> info@tonychatman.com</a></li>
+                    <li><a href="/contact">Book Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tony Chatman. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Nav & Scroll Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('mainHeader');
+            const utilityBar = document.querySelector('.top-utility-bar');
+            const toggleBtn = document.getElementById('mobileNavToggle');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const icon = document.getElementById('mobileNavIcon');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 45) {
+                    if (utilityBar) utilityBar.classList.add('scrolled');
+                    if (header) header.classList.add('scrolled');
+                } else {
+                    if (utilityBar) utilityBar.classList.remove('scrolled');
+                    if (header) header.classList.remove('scrolled');
+                }
+            });
+
+            if (toggleBtn && overlay) {
+                toggleBtn.addEventListener('click', function() {
+                    const isOpen = overlay.classList.contains('active');
+                    if (isOpen) {
+                        overlay.classList.remove('active');
+                        icon.className = 'fa-solid fa-bars';
+                        document.body.style.overflow = '';
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    } else {
+                        overlay.classList.add('active');
+                        icon.className = 'fa-solid fa-xmark';
+                        document.body.style.overflow = 'hidden';
+                        toggleBtn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

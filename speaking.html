@@ -35,19 +35,30 @@
             width: 100%;
             height: 300px;
             border-radius: 28px;
-            background: linear-gradient(145deg, #1d1d1f, #434345);
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
             position: relative;
             overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
         }
-        .apple-card-img i {
-            font-size: 80px;
-            color: #fff;
-            opacity: 0.9;
+        .apple-card:hover .apple-card-img {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+        }
+        .apple-card-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 15, 29, 0.1) 0%, rgba(10, 15, 29, 0.45) 100%);
+            border-radius: 28px;
+            pointer-events: none;
         }
         .apple-dots {
             display: flex;
@@ -245,21 +256,8 @@
             .main-header .logo img {
                 height: 28px !important;
             }
-        }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
+
+            /* Explicit enforcement of uniform sizes on desktop */
             .main-header ul {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -277,7 +275,7 @@
                 padding: 0 40px !important;
                 box-sizing: border-box !important;
             }
-
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -309,18 +307,46 @@
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="/">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
                 <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
         </div>
         <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
             <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
                 <li><a href="/resources">RESOURCES</a></li>
-                <li><a href="/meet-tony" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a href="/meet-tony" style="color: #FF6B00;">MEET TONY</a></li>
                 <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/meet-tony" style="color: #FF6B00;">Meet Tony</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
 <!-- Hero Section -->
 <section class="hero-section" style="background-image: url('Photos/SPC_2104.edited.jpg'); background-size: cover; background-position: center;">
 <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
@@ -488,9 +514,9 @@
 <p class="section-subtitle" style="text-align: center;">Here is what executives, event planners, and organizations consistently say about working with Tony.</p>
 <div class="apple-grid">
 <!-- Card 1 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, var(--accent-terracotta) 0%, #9C4121 100%);">
-<i class="fa-solid fa-flask" style="color: #fff; font-size: 80px; opacity: 0.95;"></i>
+<div class="apple-card" data-category="Science and Story" data-concept="neuroscience behavioral psychology human data decision making">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot active" style="background-color: var(--accent-terracotta);"></span>
@@ -506,9 +532,9 @@
 </div>
 </div>
 <!-- Card 2 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
-<i class="fa-solid fa-bullseye" style="color: #fff;"></i>
+<div class="apple-card" data-category="Reads the Room" data-concept="conference audience keynote stage theater engaged crowd">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot"></span>
@@ -524,9 +550,9 @@
 </div>
 </div>
 <!-- Card 3 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
-<i class="fa-solid fa-cogs" style="color: #fff;"></i>
+<div class="apple-card" data-category="Customized Impact" data-concept="executive workshop collaborative strategy tailoring roadmap">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot bordered"></span>
@@ -542,9 +568,9 @@
 </div>
 </div>
 <!-- Card 4 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
-<i class="fa-solid fa-building" style="color: #fff;"></i>
+<div class="apple-card" data-category="In the Trenches" data-concept="high stakes leadership executive security operational experience">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot active" style="background-color: #34c759;"></span>
@@ -560,9 +586,9 @@
 </div>
 </div>
 <!-- Card 5 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
-<i class="fa-solid fa-chart-line" style="color: #fff;"></i>
+<div class="apple-card" data-category="Makes Change Stick" data-concept="sustainable business transformation metrics growth leadership">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot"></span>
@@ -578,9 +604,9 @@
 </div>
 </div>
 <!-- Card 6 -->
-<div class="apple-card">
-<div class="apple-card-img" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);">
-<i class="fa-solid fa-handshake" style="color: #fff;"></i>
+<div class="apple-card" data-category="Easy to Work With" data-concept="professional partnership collaborative meeting executive warmth">
+<div class="apple-card-img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80');">
+<div class="apple-card-img-overlay"></div>
 </div>
 <div class="apple-dots">
 <span class="apple-dot"></span>
@@ -716,18 +742,74 @@
     </script>
 <script>
         // Header Scroll Effect
-        const topUtilityBar = document.querySelector('.top-utility-bar');
-        const mainHeader = document.getElementById('mainHeader');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                if(topUtilityBar) topUtilityBar.classList.add('scrolled');
-                if(mainHeader) mainHeader.classList.add('scrolled');
+        // Why Hire Tony Card Image Resolver & Registry for Dynamic / Future Cards
+        (function() {
+            const whyHireImageRegistry = {
+                'science and story': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80',
+                'reads the room': 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80',
+                'customized impact': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80',
+                'in the trenches': 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80',
+                'makes change stick': 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80',
+                'easy to work with': 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80'
+            };
+
+            const conceptDefaults = [
+                'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80',
+                'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80',
+                'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80'
+            ];
+
+            const cards = document.querySelectorAll('.apple-card');
+            cards.forEach((card, idx) => {
+                const imgEl = card.querySelector('.apple-card-img');
+                if (!imgEl) return;
+
+                const currentBg = imgEl.style.backgroundImage || '';
+                const title = (card.querySelector('.apple-card-title')?.textContent || '').toLowerCase().trim();
+
+                if (!currentBg) {
+                    const matchedUrl = whyHireImageRegistry[title] || conceptDefaults[idx % conceptDefaults.length];
+                    imgEl.style.backgroundImage = `url('${matchedUrl}')`;
+                }
+            });
+        })();
+
+        // Mobile Menu Drawer Logic
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavIcon = document.getElementById('mobileNavIcon');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenuOverlay.classList.toggle('is-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileNavIcon.classList.remove('fa-bars');
+                mobileNavIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
             } else {
-                if(topUtilityBar) topUtilityBar.classList.remove('scrolled');
-                if(mainHeader) mainHeader.classList.remove('scrolled');
+                mobileNavIcon.classList.remove('fa-xmark');
+                mobileNavIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
             }
-        });
+        }
+
+        if (mobileNavToggle && mobileMenuOverlay) {
+            mobileNavToggle.addEventListener('click', toggleMobileMenu);
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenuOverlay.classList.contains('is-open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('is-open')) {
+                    toggleMobileMenu();
+                }
+            });
+        }
     </script>
 </body>
 </html>

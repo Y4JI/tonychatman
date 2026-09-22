@@ -87,21 +87,8 @@
             .main-header .logo img {
                 height: 28px !important;
             }
-        }
-    
-            /* Explicit enforcement of uniform sizes */
-            .main-header {
-                height: 64px !important;
-                padding: 0 35px !important;
-                box-sizing: border-box !important;
-            }
-            .main-header .logo img {
-                height: 35px !important;
-                width: auto !important;
-                display: inline-block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
+
+            /* Explicit enforcement of uniform sizes on desktop */
             .main-header ul {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -119,7 +106,7 @@
                 padding: 0 40px !important;
                 box-sizing: border-box !important;
             }
-
+        }
     </style>
 
     <!-- Top Utility Bar -->
@@ -151,18 +138,46 @@
             </ul>
         </nav>
         <div class="header-center" style="flex: 0 0 auto; display: flex; justify-content: center; padding: 0 10px;">
-            <a class="logo" href="/">
+            <a class="logo" href="/" aria-label="Tony Chatman Home">
                 <img src="Photos/tonychatman-logo.png" alt="Tony Chatman Logo" style="height: 35px; width: auto; vertical-align: middle; display: inline-block; filter: brightness(0) invert(1);" />
             </a>
         </div>
         <nav class="header-right" style="flex: 1; display: flex; justify-content: flex-start; padding-left: 30px;">
             <ul style="list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; padding: 0;">
                 <li><a href="/resources">RESOURCES</a></li>
-                <li><a href="/meet-tony" style="color: #FF6B00;">MEETING PLANNERS</a></li>
+                <li><a href="/meet-tony" style="color: #FF6B00;">MEET TONY</a></li>
                 <li><a class="btn btn-orange btn-nav-custom" href="/contact">BOOK TONY</a></li>
             </ul>
         </nav>
+        <!-- Mobile Nav Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <ul class="mobile-menu-links">
+            <li><a href="/speaking">Speaking</a></li>
+            <li><a href="/training">Training</a></li>
+            <li><a href="/executiveadvisory">Executive Advisory</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/meet-tony" style="color: #FF6B00;">Meet Tony</a></li>
+            <li><a class="btn-mobile-book" href="/contact">Book Tony</a></li>
+        </ul>
+        <div class="mobile-menu-contact">
+            <a href="tel:6304005365"><i class="fa-solid fa-phone"></i> 630-400-5365</a>
+            <a href="mailto:INFO@TONYCHATMAN.COM"><i class="fa-solid fa-envelope"></i> INFO@TONYCHATMAN.COM</a>
+            <div class="mobile-menu-socials">
+                <a href="https://www.facebook.com/tonyblueprint" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/TonyChatman" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/tonychatmanspeaks/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/tonychatman/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.tiktok.com/@tonychatmanspeaks" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
 <!-- I. Hero Section -->
 <section class="hero-section hero-left-aligned" style="position: relative; z-index: 0;">
 <div class="image-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: #0A0F1D;">
@@ -333,8 +348,8 @@
 </style>
 <div class="services-grid-4 reveal">
 <!-- Card 1 -->
-<div class="service-card" style="height: 400px;">
-<div class="service-card-bg" style="background-image: url('Photos/D87A3375.jpg');"></div>
+<div class="service-card" style="height: 400px;" data-category="Science & Story" data-concept="neuroscience behavioral psychology human data decision making">
+<div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80');"></div>
 <div class="service-card-overlay"></div>
 <div class="service-card-content">
 <h3>Science &amp; Story</h3>
@@ -343,8 +358,8 @@
 </div>
 </div>
 <!-- Card 2 -->
-<div class="service-card" style="height: 400px;">
-<div class="service-card-bg" style="background-image: url('Photos/SPC_2104.edited.jpg');"></div>
+<div class="service-card" style="height: 400px;" data-category="Reads the Room" data-concept="conference audience keynote stage theater engaged crowd">
+<div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80');"></div>
 <div class="service-card-overlay"></div>
 <div class="service-card-content">
 <h3>Reads the Room</h3>
@@ -353,8 +368,8 @@
 </div>
 </div>
 <!-- Card 3 -->
-<div class="service-card" style="height: 400px;">
-<div class="service-card-bg" style="background-image: url('Photos/Copy%20of%20SPC_2095.edit.jpg');"></div>
+<div class="service-card" style="height: 400px;" data-category="Custom Impact" data-concept="executive workshop collaborative strategy tailoring roadmap">
+<div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80');"></div>
 <div class="service-card-overlay"></div>
 <div class="service-card-content">
 <h3>Custom Impact</h3>
@@ -363,8 +378,8 @@
 </div>
 </div>
 <!-- Card 4 -->
-<div class="service-card" style="height: 400px;">
-<div class="service-card-bg" style="background-image: url('Photos/D87A3369.jpg');"></div>
+<div class="service-card" style="height: 400px;" data-category="Credentials" data-concept="prestigious keynote stage professional speaker CSP national speaking honor">
+<div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80');"></div>
 <div class="service-card-overlay"></div>
 <div class="service-card-content">
 <h3>Credentials</h3>
@@ -448,6 +463,38 @@
         });
     </script>
 <script>
+        // Why Hire Tony Card Image Resolver & Registry for Dynamic / Future Cards
+        (function() {
+            const whyHireImageRegistry = {
+                'science & story': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80',
+                'reads the room': 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80',
+                'custom impact': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80',
+                'credentials': 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80'
+            };
+
+            const conceptDefaults = [
+                'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80',
+                'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80',
+                'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80'
+            ];
+
+            const cards = document.querySelectorAll('.services-grid-4 .service-card');
+            cards.forEach((card, idx) => {
+                const bgEl = card.querySelector('.service-card-bg');
+                if (!bgEl) return;
+
+                const currentBg = bgEl.style.backgroundImage || '';
+                const title = (card.querySelector('h3')?.textContent || '').toLowerCase().trim();
+
+                if (!currentBg || currentBg.includes('Photos/')) {
+                    const matchedUrl = whyHireImageRegistry[title] || conceptDefaults[idx % conceptDefaults.length];
+                    bgEl.style.backgroundImage = `url('${matchedUrl}')`;
+                    bgEl.style.backgroundSize = 'cover';
+                    bgEl.style.backgroundPosition = 'center';
+                }
+            });
+        })();
+
         // Header Scroll Effect
         const topUtilityBar = document.querySelector('.top-utility-bar');
         const mainHeader = document.getElementById('mainHeader');
@@ -461,6 +508,43 @@
                 if(mainHeader) mainHeader.classList.remove('scrolled');
             }
         });
+
+        // Mobile Menu Drawer Logic
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavIcon = document.getElementById('mobileNavIcon');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenuOverlay.classList.toggle('is-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                mobileNavIcon.classList.remove('fa-bars');
+                mobileNavIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNavIcon.classList.remove('fa-xmark');
+                mobileNavIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (mobileNavToggle && mobileMenuOverlay) {
+            mobileNavToggle.addEventListener('click', toggleMobileMenu);
+
+            mobileMenuOverlay.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenuOverlay.classList.contains('is-open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('is-open')) {
+                    toggleMobileMenu();
+                }
+            });
+        }
     </script>
 </body>
 </html>
