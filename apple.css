@@ -1,8 +1,7 @@
 /* Apple Vibe CSS */
-@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 
 :root {
-    --apple-font: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --apple-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     --text-color: #1d1d1f;
     --text-color-secondary: #86868b;
     --bg-color: #f5f5f7;
@@ -1578,132 +1577,76 @@ html, body {
 }
 
 /* ==========================================================================
-   Force Multiplier Assessment Banner
+   7-Point Resistance Assessment Section (Apple Design System)
    ========================================================================== */
-.force-multiplier-banner {
-    background-color: #516dec;
-    padding: 70px 20px;
-    position: relative;
+.assessment-section {
+    background-color: var(--bg-color);
     width: 100%;
+    position: relative;
     overflow: hidden;
 }
 
-.force-multiplier-banner .force-multiplier-inner {
+.assessment-section .container {
+    max-width: 1060px;
+}
+
+.assessment-section .split-layout {
+    gap: 60px;
+    align-items: center;
+}
+
+.assessment-section .content-side {
+    flex: 0.95;
+}
+
+.assessment-section .assessment-image-side {
+    background: transparent;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 900px;
-}
-
-.force-multiplier-banner .fm-icon-wrap {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    transition: transform 0.3s ease;
+    overflow: visible;
+    height: auto;
+    min-height: auto;
+    flex: 1.15;
 }
 
-.force-multiplier-banner:hover .fm-icon-wrap {
-    transform: translateY(-2px);
+.assessment-chart-img {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    object-fit: contain;
+    transform: scale(1.1);
+    transform-origin: center center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.force-multiplier-banner .fm-title {
-    color: #f5eb26;
-    font-family: var(--apple-font);
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    margin: 0 0 28px;
-    text-align: center;
-}
-
-.force-multiplier-banner .fm-btn-frame {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 10px;
-}
-
-.force-multiplier-banner .fm-corner-bracket {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-}
-
-.force-multiplier-banner .fm-corner-tr {
-    top: 0;
-    right: 0;
-    border-top: 2px solid rgba(255, 255, 255, 0.85);
-    border-right: 2px solid rgba(255, 255, 255, 0.85);
-}
-
-.force-multiplier-banner .fm-corner-bl {
-    bottom: 0;
-    left: 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.85);
-    border-left: 2px solid rgba(255, 255, 255, 0.85);
-}
-
-.force-multiplier-banner .fm-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    background-color: #f5eb26;
-    color: #000000;
-    font-family: var(--apple-font);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    padding: 13px 26px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
-
-.force-multiplier-banner .fm-btn:hover {
-    background-color: #fdf542;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    color: #000000;
-}
-
-.force-multiplier-banner .fm-btn-highlight {
-    background-color: #ff9632;
-    color: #000000;
-    padding: 2px 6px;
-    border-radius: 2px;
-    display: inline-block;
-    line-height: 1.2;
+.assessment-chart-img:hover {
+    transform: scale(1.14);
 }
 
 @media screen and (max-width: 768px) {
-    .force-multiplier-banner {
-        padding: 55px 16px;
+    .assessment-section .split-layout {
+        gap: 40px !important;
     }
 
-    .force-multiplier-banner .fm-title {
-        font-size: 26px;
-        line-height: 1.3;
-        margin-bottom: 24px;
+    .assessment-section .assessment-image-side {
+        min-height: auto !important;
+        flex: 1 !important;
     }
 
-    .force-multiplier-banner .fm-btn {
-        font-size: 15px;
-        padding: 12px 22px;
+    .assessment-section .content-side {
+        flex: 1 !important;
+    }
+
+    .assessment-chart-img {
+        max-width: 360px;
+        transform: scale(1);
+        margin: 0 auto;
+    }
+
+    .assessment-chart-img:hover {
+        transform: scale(1.03);
     }
 }
 
-@media screen and (max-width: 480px) {
-    .force-multiplier-banner .fm-title {
-        font-size: 22px;
-    }
-}
 
